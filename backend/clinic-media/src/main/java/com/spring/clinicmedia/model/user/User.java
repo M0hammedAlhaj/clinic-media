@@ -1,10 +1,13 @@
 package com.spring.clinicmedia.model.user;
 
 import com.spring.clinicmedia.model.Registration;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.OneToOne;
 
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class User {
+@MappedSuperclass
+public abstract class User {
 
 
     @OneToOne
