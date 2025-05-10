@@ -23,15 +23,24 @@ public class Login {
 
         Registration registration = registrationRepository.getByEmail(loginRequest.getEmail());
 
-        if (!passwordEncoder.matches(loginRequest.getPassword(), registration.getPassword())) {
-            throw new RuntimeException("Wrong password");
-        }
+        isPasswordMatch(loginRequest, registration);
 
         String token = generateToken.generateToken(loginRequest.getEmail());
 
+        return getUserLoginResult(loginRequest, token);
+    }
+
+    private static UserLoginResult getUserLoginResult(UserLoginRequest loginRequest, String token) {
         return UserLoginResult.builder()
                 .token(token)
                 .userEmail(loginRequest.getEmail())
                 .build();
     }
+
+    private void isPasswordMatch(UserLoginRequest loginRequest, Registration registration) {
+        if (!passwordEncoder.matches(loginRequest.getPassword(), registration.getPassword())) {
+            throw new RuntimeException("Wrong password");
+        }
+    }
+
 }

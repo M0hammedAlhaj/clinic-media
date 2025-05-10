@@ -1,9 +1,13 @@
 package com.spring.clinicmedia.infrastructure.repository;
 
+import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
+import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.user.Admin;
 import com.spring.clinicmedia.domain.port.repository.AdminRepository;
 import com.spring.clinicmedia.infrastructure.repositoryJpa.AdminJpaRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -23,4 +27,15 @@ public class AdminRepositoryAdapter implements AdminRepository {
     public void saveUser(Admin user) {
         adminJpaRepository.save(user);
     }
+
+    public Page<Admin> getUserByActive(boolean active, Pageable pageable) {
+        return adminJpaRepository.findByIsActive(active, pageable);
+    }
+
+    @Override
+    public Admin getUserById(Integer id) {
+        return adminJpaRepository.findById(id)
+                .orElseThrow(() -> new ResourcesNotFoundException(UserType.ADMIN, id));
+    }
+
 }

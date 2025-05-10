@@ -19,6 +19,7 @@ public class PatientUserCreator implements SpecificUserCreator {
     public User create(UserCreationCommand command) {
         User user = new Patient();
         UserCreationCommandMapper.setRegistration(command, user);
+        user.setActive(true);
         return user;
     }
 }

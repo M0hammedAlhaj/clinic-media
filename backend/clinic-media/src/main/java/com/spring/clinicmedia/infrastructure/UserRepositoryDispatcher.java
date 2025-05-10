@@ -31,6 +31,9 @@ public class UserRepositoryDispatcher {
 
     @SuppressWarnings("unchecked")
     public <T extends User> UserRepository<T> getRepository(UserType type) {
+            if (!maps.containsKey(type)) {
+                throw new UnsupportedOperationException();
+            }
         return (UserRepository<T>) maps.get(type);
     }
 }
