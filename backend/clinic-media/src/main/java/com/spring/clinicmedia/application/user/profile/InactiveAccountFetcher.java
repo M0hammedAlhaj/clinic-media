@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.application;
+package com.spring.clinicmedia.application.user.profile;
 
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.user.User;
@@ -21,7 +21,6 @@ public class InactiveAccountFetcher {
 
     public List<InactiveAccountResponse> execute(UserType type, int pageNumber) {
 
-
         Pageable pageable = PageRequest.of(pageNumber, 10);
 
         UserRepository<User> userRepository =
@@ -35,7 +34,8 @@ public class InactiveAccountFetcher {
                 .toList();
     }
 
-    private static Function<User, InactiveAccountResponse> createUserInactiveAccountResponseFunction() {
+    private static Function<User, InactiveAccountResponse> createUserInactiveAccountResponseFunction()
+    {
         return user -> InactiveAccountResponse
                 .builder()
                 .userId(user.getUserId())

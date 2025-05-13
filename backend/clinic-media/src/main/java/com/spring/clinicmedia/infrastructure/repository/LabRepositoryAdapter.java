@@ -34,10 +34,15 @@ public class LabRepositoryAdapter implements LabRepository {
     }
 
     @Override
-    public Lab getUserById(Integer id) {
+    public Lab getUserById(Long id) {
         return labJpaRepository.findById(id)
-                .orElseThrow(() -> new ResourcesNotFoundException(UserType.ADMIN, id));
+                .orElseThrow(() -> new ResourcesNotFoundException(UserType.LAB, id));
 
+    }
+
+    @Override
+    public Lab getUserByUserEmail(String userEmail) {
+        return labJpaRepository.findLabByRegistrationEmail(userEmail).orElseThrow(() -> new ResourcesNotFoundException(UserType.LAB, userEmail));
     }
 
 }

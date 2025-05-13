@@ -12,11 +12,13 @@ import java.util.Optional;
 
 @Repository
 @EnableJpaRepositories
-public interface AdminJpaRepository extends JpaRepository<Admin, Integer> {
+public interface AdminJpaRepository extends JpaRepository<Admin,Long > {
 
 
     Optional<Admin> findByRegistrationEmail(String email);
 
 
     Page<Admin> findByIsActive(boolean active, Pageable pageable);
+
+    Admin getAdminsByRegistrationEmail(String userEmail );
 }

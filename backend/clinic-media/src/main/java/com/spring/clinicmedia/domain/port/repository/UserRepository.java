@@ -14,6 +14,8 @@ public interface UserRepository<T extends User> {
 
     Page<T> getUserByActive(boolean active, Pageable pageable);
 
-    T getUserById(Integer id);
+    T getUserById(Long id);
+
+    T getUserByUserEmail(String userEmail);
 
 }

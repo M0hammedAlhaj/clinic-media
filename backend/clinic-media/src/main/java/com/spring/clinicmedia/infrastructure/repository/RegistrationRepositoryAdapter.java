@@ -1,5 +1,6 @@
 package com.spring.clinicmedia.infrastructure.repository;
 
+import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.enitity.Registration;
 import com.spring.clinicmedia.domain.port.repository.RegistrationRepository;
 import com.spring.clinicmedia.infrastructure.repositoryJpa.RegistrationJpaRepository;
@@ -22,6 +23,7 @@ public class RegistrationRepositoryAdapter implements RegistrationRepository {
     @Override
     public Registration getByEmail(String email) {
 
-        return repository.findByEmail(email).orElseThrow(()-> new RuntimeException("Email not found"));
+        return repository.findByEmail(email)
+                .orElseThrow(() -> new ResourcesNotFoundException("Email not found"));
     }
 }

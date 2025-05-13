@@ -1,7 +1,7 @@
 package com.spring.clinicmedia.infrastructure.mapping;
 
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
-import com.spring.clinicmedia.presentation.dto.ClinicProfile;
+import com.spring.clinicmedia.presentation.dto.profile.ClinicProfile;
 
 public class ClinicProfileMapper {
 

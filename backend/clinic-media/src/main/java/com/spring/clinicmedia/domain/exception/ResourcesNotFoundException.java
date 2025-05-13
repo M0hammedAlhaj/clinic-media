@@ -7,7 +7,11 @@ public class ResourcesNotFoundException extends RuntimeException {
         super(message);
     }
 
-    public ResourcesNotFoundException(UserType userType, Integer id) {
+    public ResourcesNotFoundException(UserType userType, long id) {
         super(String.format("%s not found by Id : %d", userType, id));
     }
+    public ResourcesNotFoundException(UserType userType, String message) {
+        super(String.format("%s not found by Id : %s", userType, message));
+    }
+
 }

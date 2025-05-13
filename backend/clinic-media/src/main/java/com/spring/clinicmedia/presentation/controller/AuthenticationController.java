@@ -1,12 +1,11 @@
 package com.spring.clinicmedia.presentation.controller;
 
-import com.spring.clinicmedia.application.CreateAccount;
-import com.spring.clinicmedia.application.Login;
+import com.spring.clinicmedia.application.user.registaration.CreateAccount;
+import com.spring.clinicmedia.application.user.registaration.Login;
 import com.spring.clinicmedia.domain.command.UserCreationCommand;
 import com.spring.clinicmedia.domain.result.UserCreationResult;
 import com.spring.clinicmedia.domain.result.UserLoginResult;
 import com.spring.clinicmedia.presentation.dto.createAccount.UserCreationRequest;
-import com.spring.clinicmedia.presentation.dto.createAccount.UserCreationResponse;
 import com.spring.clinicmedia.presentation.dto.login.UserLoginRequest;
 import com.spring.clinicmedia.presentation.map.UserCreationMapper;
 import jakarta.validation.Valid;
@@ -27,15 +26,12 @@ public class AuthenticationController {
     private final Login login;
 
     @PostMapping("/register")
-    public ResponseEntity<UserCreationResponse> creationResponse(@RequestBody @Valid UserCreationRequest request) {
+    public ResponseEntity<UserCreationResult> creationResponse
+            (@RequestBody @Valid UserCreationRequest request) {
 
         UserCreationCommand command = UserCreationMapper.toCommand(request);
 
-        UserCreationResult result = createAccount.execute(command);
-
-        UserCreationResponse response = UserCreationMapper.toResponse(result);
-
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(createAccount.execute(command));
     }
 
     @PostMapping("/login")

@@ -1,8 +1,8 @@
-package com.spring.clinicmedia.application;
+package com.spring.clinicmedia.application.user.registaration;
 
 
 import com.spring.clinicmedia.domain.command.UserCreationCommand;
-import com.spring.clinicmedia.domain.factory.UserFactory;
+import com.spring.clinicmedia.domain.factory.   UserFactory;
 import com.spring.clinicmedia.domain.model.enitity.user.User;
 import com.spring.clinicmedia.domain.port.repository.UserRepository;
 import com.spring.clinicmedia.domain.port.validator.EmailValidator;
@@ -39,6 +39,7 @@ public class CreateAccount {
 
         encodeUserPassword(userSaved, userCommand.getPassword());
         userRepository.saveUser(userSaved);
+
         return UserCreationResultMapping.mapToResult(userSaved);
     }
 

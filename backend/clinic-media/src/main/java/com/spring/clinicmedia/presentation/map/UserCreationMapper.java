@@ -4,6 +4,7 @@ import com.spring.clinicmedia.domain.command.UserCreationCommand;
 import com.spring.clinicmedia.domain.result.UserCreationResult;
 import com.spring.clinicmedia.presentation.dto.createAccount.UserCreationRequest;
 import com.spring.clinicmedia.presentation.dto.createAccount.UserCreationResponse;
+import com.spring.clinicmedia.presentation.exception.PasswordMismatchException;
 
 public class UserCreationMapper {
 
@@ -25,7 +26,7 @@ public class UserCreationMapper {
 
     private static void checkPasswordConfirm(String password, String confirmPassword) {
         if (!password.equals(confirmPassword)) {
-            throw new IllegalArgumentException("Passwords do not match");
+            throw new PasswordMismatchException("Passwords do not match");
         }
     }
 

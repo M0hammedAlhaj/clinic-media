@@ -33,9 +33,15 @@ public class AdminRepositoryAdapter implements AdminRepository {
     }
 
     @Override
-    public Admin getUserById(Integer id) {
+    public Admin getUserById(Long id) {
         return adminJpaRepository.findById(id)
                 .orElseThrow(() -> new ResourcesNotFoundException(UserType.ADMIN, id));
+    }
+
+    @Override
+    public Admin getUserByUserEmail(String userEmail) {
+        return adminJpaRepository.findByRegistrationEmail(userEmail)
+                .orElseThrow(() -> new ResourcesNotFoundException(UserType.ADMIN, userEmail));
     }
 
 }

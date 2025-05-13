@@ -33,8 +33,14 @@ public class DoctorRepositoryAdapter implements DoctorRepository {
     }
 
     @Override
-    public Doctor getUserById(Integer id) {
+    public Doctor getUserById(Long id) {
         return doctorJpaRepository.findById(id)
-                .orElseThrow(() -> new ResourcesNotFoundException(UserType.ADMIN, id));
+                .orElseThrow(() -> new ResourcesNotFoundException(UserType.DOCTOR, id));
+    }
+
+    @Override
+    public Doctor getUserByUserEmail(String userEmail) {
+        return doctorJpaRepository.findByRegistrationEmail(userEmail)
+                .orElseThrow(() -> new ResourcesNotFoundException(UserType.DOCTOR, userEmail));
     }
 }

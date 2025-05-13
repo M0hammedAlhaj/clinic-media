@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Repository
 @EnableJpaRepositories
-public interface DoctorJpaRepository extends JpaRepository<Doctor, Integer> {
+public interface DoctorJpaRepository extends JpaRepository<Doctor, Long> {
 
 
     Optional<Doctor> findByRegistrationEmail(String email);

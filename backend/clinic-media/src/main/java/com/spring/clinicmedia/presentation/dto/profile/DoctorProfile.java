@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.presentation.dto;
+package com.spring.clinicmedia.presentation.dto.profile;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class DoctorProfile {
 
-    private String name;
+    private String email;
 
     private String userName;
 

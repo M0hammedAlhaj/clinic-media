@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.application;
+package com.spring.clinicmedia.application.user.registaration;
 
 import com.spring.clinicmedia.domain.model.enitity.Registration;
 import com.spring.clinicmedia.domain.port.jwt.GenerateToken;

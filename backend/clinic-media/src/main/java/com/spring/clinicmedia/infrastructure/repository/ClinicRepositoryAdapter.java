@@ -35,9 +35,15 @@ public class ClinicRepositoryAdapter implements ClinicRepository {
     }
 
     @Override
-    public Clinic getUserById(Integer id) {
+    public Clinic getUserById(Long id) {
         return clinicJpaRepository.findById(id)
-                .orElseThrow(() -> new ResourcesNotFoundException(UserType.DOCTOR, id));
+                .orElseThrow(() -> new ResourcesNotFoundException(UserType.CLINIC, id));
+    }
+
+    @Override
+    public Clinic getUserByUserEmail(String userEmail) {
+        return clinicJpaRepository.findClinicByRegistrationEmail(userEmail)
+                .orElseThrow(() -> new ResourcesNotFoundException(UserType.CLINIC, userEmail));
     }
 
 

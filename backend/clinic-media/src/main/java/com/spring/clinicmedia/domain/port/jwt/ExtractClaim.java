@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.domain.port.validator;
+package com.spring.clinicmedia.domain.port.jwt;
 
 import io.jsonwebtoken.Claims;
 

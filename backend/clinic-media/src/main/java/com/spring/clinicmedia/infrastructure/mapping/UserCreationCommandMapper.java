@@ -12,6 +12,7 @@ public class UserCreationCommandMapper {
                 .email(command.getEmail())
                 .name(command.getName())
                 .password(command.getPassword())
+                .type(command.getUserType())
                 .build());
     }
 }

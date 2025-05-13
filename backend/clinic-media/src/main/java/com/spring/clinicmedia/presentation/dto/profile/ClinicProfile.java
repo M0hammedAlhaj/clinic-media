@@ -1,6 +1,5 @@
-package com.spring.clinicmedia.presentation.dto;
+package com.spring.clinicmedia.presentation.dto.profile;
 
-import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

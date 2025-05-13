@@ -1,6 +1,7 @@
 package com.spring.clinicmedia.domain.model.enitity;
 
 
+import com.spring.clinicmedia.domain.model.UserType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,5 +26,8 @@ public class Registration {
     private String email;
 
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private UserType type;
 
 }

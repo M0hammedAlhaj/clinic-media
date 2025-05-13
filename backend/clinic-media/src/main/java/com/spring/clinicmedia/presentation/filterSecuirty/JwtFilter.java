@@ -2,7 +2,7 @@ package com.spring.clinicmedia.presentation.filterSecuirty;
 
 import com.spring.clinicmedia.infrastructure.jwt.BaseHandler;
 import com.spring.clinicmedia.infrastructure.jwt.claim.ExtractClaimEmail;
-import com.spring.clinicmedia.presentation.coinfigration.CustomUserDetailedService;
+import com.spring.clinicmedia.presentation.coinfigration.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,12 +24,12 @@ public class JwtFilter extends OncePerRequestFilter {
 
     private final BaseHandler<String> baseHandler;
 
-    private final CustomUserDetailedService customUserDetailedService;
+    private final CustomUserDetailsService customUserDetailedService;
 
     public JwtFilter(ExtractClaimEmail extractClaimEmail,
                      @Qualifier(value = "emailValidatorJwt")
                      BaseHandler<String> baseHandler,
-                     CustomUserDetailedService customUserDetailedService) {
+                     CustomUserDetailsService customUserDetailedService) {
         this.extractClaimEmail = extractClaimEmail;
         this.baseHandler = baseHandler;
         this.customUserDetailedService = customUserDetailedService;
