@@ -21,4 +21,5 @@ public class ClinicUserCreator implements SpecificUserCreator {
         UserCreationCommandMapper.setRegistration(command, clinic);
         return clinic;
     }
+
 }

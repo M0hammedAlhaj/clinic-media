@@ -34,8 +34,7 @@ public class InactiveAccountFetcher {
                 .toList();
     }
 
-    private static Function<User, InactiveAccountResponse> createUserInactiveAccountResponseFunction()
-    {
+    private static Function<User, InactiveAccountResponse> createUserInactiveAccountResponseFunction() {
         return user -> InactiveAccountResponse
                 .builder()
                 .userId(user.getUserId())

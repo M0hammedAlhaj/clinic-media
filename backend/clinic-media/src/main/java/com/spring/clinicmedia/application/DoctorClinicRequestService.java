@@ -9,23 +9,32 @@ import com.spring.clinicmedia.domain.port.repository.ClinicRepository;
 import com.spring.clinicmedia.domain.port.repository.DoctorRepository;
 import com.spring.clinicmedia.domain.port.repository.RequestRepository;
 import com.spring.clinicmedia.domain.port.validator.RequestValidator;
+import com.spring.clinicmedia.domain.port.validator.UserActivationValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
-public class RequestCreationService {
+public class DoctorClinicRequestService {
 
     private final RequestRepository requestRepository;
     private final ClinicRepository clinicRepository;
     private final DoctorRepository doctorRepository;
     private final RequestValidator validator;
+    private final UserActivationValidator userActivationValidator;
 
     @Transactional
     public void createRequest(long doctorId, long clinicId, UserType senderType) {
+
         Clinic clinic = clinicRepository.getUserById(clinicId);
         Doctor doctor = doctorRepository.getUserById(doctorId);
+
+        if (senderType.equals(UserType.DOCTOR)) {
+            userActivationValidator.validate(doctorId, UserType.DOCTOR);
+        } else {
+            userActivationValidator.validate(clinicId, UserType.CLINIC);
+        }
 
         validator.validateRequestDoesNotExist(clinicId, doctorId, senderType);
 

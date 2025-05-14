@@ -30,10 +30,7 @@ public class UserCreationMapper {
         }
     }
 
-    public static UserCreationResponse toResponse(UserCreationResult result) {
-        return UserCreationResponse.builder()
-                .userId(result.getUserId())
-                .email(result.getEmail())
-                .build();
-    }
+
+
+
 }

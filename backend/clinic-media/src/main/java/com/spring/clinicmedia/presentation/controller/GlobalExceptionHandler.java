@@ -1,6 +1,8 @@
 package com.spring.clinicmedia.presentation.controller;
 
+import com.spring.clinicmedia.domain.exception.EmailAlreadyExistsException;
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
+import com.spring.clinicmedia.domain.exception.UserAccountNotActivation;
 import com.spring.clinicmedia.presentation.exception.PasswordMismatchException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +36,28 @@ public class GlobalExceptionHandler {
         response.put("message", ex.getMessage());
 
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    public ResponseEntity<HashMap<String, Object>> handleEmailAlreadyExists(EmailAlreadyExistsException ex) {
+        HashMap<String, Object> response = new HashMap<>();
+        response.put("timestamp", LocalDateTime.now());
+        response.put("status", HttpStatus.CONFLICT.value());
+        response.put("error", "Conflict");
+        response.put("message", ex.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(UserAccountNotActivation.class)
+    public ResponseEntity<HashMap<String, Object>> handleUserAccountNotActivated(UserAccountNotActivation ex) {
+        HashMap<String, Object> response = new HashMap<>();
+        response.put("timestamp", LocalDateTime.now());
+        response.put("status", HttpStatus.UNAUTHORIZED.value());
+        response.put("error", "Unauthorized");
+        response.put("message", ex.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
     }
 
 

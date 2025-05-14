@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @Setter
-public class CustomUserDetail implements UserDetails {
+public class    CustomUserDetail implements UserDetails {
 
     private final Registration registration;
 
@@ -46,5 +46,10 @@ public class CustomUserDetail implements UserDetails {
         UserRepository<User> userRepository = userRepositoryDispatcher.getRepository(registration.getType());
         return userRepository.
                 getUserByUserEmail(registration.getEmail()).getUserId();
+    }
+
+    public boolean isActive() {
+        UserRepository<User> userRepository = userRepositoryDispatcher.getRepository(registration.getType());
+        return userRepository.getUserByUserEmail(registration.getEmail()).isActive();
     }
 }

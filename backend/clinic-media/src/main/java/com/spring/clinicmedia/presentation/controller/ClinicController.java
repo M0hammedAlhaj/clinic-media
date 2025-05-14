@@ -1,5 +1,6 @@
 package com.spring.clinicmedia.presentation.controller;
 
+
 import com.spring.clinicmedia.application.DoctorClinicRequestService;
 import com.spring.clinicmedia.application.RequestFetcher;
 import com.spring.clinicmedia.domain.model.CustomUserDetail;
@@ -15,29 +16,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/doctors")
+@RequestMapping("/api/v1/clinics")
 @AllArgsConstructor
-public class DoctorController {
+public class ClinicController {
 
     private final DoctorClinicRequestService doctorClinicRequestService;
 
     private final RequestFetcher requestFetcher;
 
-    @PutMapping("/clinic/{clinicId}")
-    public ResponseEntity<String> doctorsAddClinic(@PathVariable int clinicId,
+    @PutMapping("/doctor/{doctorId}")
+    public ResponseEntity<String> doctorsAddClinic(@PathVariable int doctorId,
                                                    @AuthenticationPrincipal CustomUserDetail user) {
 
-        doctorClinicRequestService.createRequest(user.getUserId(), clinicId, UserType.DOCTOR);
+        doctorClinicRequestService.createRequest(doctorId, user.getUserId(), UserType.CLINIC);
 
         return ResponseEntity.ok("Doctor added");
     }
 
-    @GetMapping("/requests")
-    public ResponseEntity<List<RequestResponse>> getDoctorReceivedRequests(@AuthenticationPrincipal CustomUserDetail user
-            , @RequestParam int pageNumber) {
 
-        List<Request> requests = requestFetcher.execute(user.getUserId(), UserType.DOCTOR, pageNumber);
+    @GetMapping("/requests")
+    public ResponseEntity<List<RequestResponse>> getClinicReceivedRequest(@AuthenticationPrincipal CustomUserDetail user
+            , @RequestParam int pageNumber) {
+        List<Request> requests = requestFetcher.execute(user.getUserId(), UserType.CLINIC, pageNumber);
         return ResponseEntity.ok(RequestResponseMapper.createFromList(requests));
     }
+
 
 }
