@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.infrastructure.repositoryJpa;
+package com.spring.clinicmedia.infrastructure.Jpa;
 
 import com.spring.clinicmedia.domain.model.enitity.Registration;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,12 +1,14 @@
 package com.spring.clinicmedia.presentation.controller;
 
 
+import com.spring.clinicmedia.application.BookingDateCreation;
 import com.spring.clinicmedia.application.DoctorClinicRequestService;
 import com.spring.clinicmedia.application.RequestFetcher;
 import com.spring.clinicmedia.domain.model.CustomUserDetail;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.Request;
 import com.spring.clinicmedia.presentation.dto.RequestResponse;
+import com.spring.clinicmedia.presentation.map.BookingDateCreationRequest;
 import com.spring.clinicmedia.presentation.map.RequestResponseMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,8 @@ public class ClinicController {
 
     private final RequestFetcher requestFetcher;
 
+    private final BookingDateCreation bookingDateCreation;
+
     @PutMapping("/doctor/{doctorId}")
     public ResponseEntity<String> doctorsAddClinic(@PathVariable int doctorId,
                                                    @AuthenticationPrincipal CustomUserDetail user) {
@@ -37,9 +41,21 @@ public class ClinicController {
     @GetMapping("/requests")
     public ResponseEntity<List<RequestResponse>> getClinicReceivedRequest(@AuthenticationPrincipal CustomUserDetail user
             , @RequestParam int pageNumber) {
-        List<Request> requests = requestFetcher.execute(user.getUserId(), UserType.CLINIC, pageNumber);
+
+        List<Request> requests =
+                requestFetcher.execute(user.getUserId(), UserType.CLINIC, pageNumber);
         return ResponseEntity.ok(RequestResponseMapper.createFromList(requests));
     }
 
+    @PutMapping("/bookingDates/{doctorId}")
+    public ResponseEntity<?> addBookingsDate(@AuthenticationPrincipal CustomUserDetail clinic,
+                                             @RequestBody BookingDateCreationRequest bookingDateCreationRequest,
+                                             @PathVariable long doctorId) {
+
+        bookingDateCreation.execute(clinic.getUserId(),
+                doctorId,
+                bookingDateCreationRequest);
+        return null;
+    }
 
 }

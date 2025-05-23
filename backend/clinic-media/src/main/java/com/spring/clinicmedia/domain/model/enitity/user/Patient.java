@@ -43,4 +43,6 @@ public class Patient extends User {
     @JoinColumn(name = "patient_question_id")
     private PatientQuestion patientQuestion;
 
+
+
 }

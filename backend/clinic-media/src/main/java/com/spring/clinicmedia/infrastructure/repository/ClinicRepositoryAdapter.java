@@ -4,7 +4,7 @@ import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
 import com.spring.clinicmedia.domain.port.repository.ClinicRepository;
-import com.spring.clinicmedia.infrastructure.repositoryJpa.ClinicJpaRepository;
+import com.spring.clinicmedia.infrastructure.Jpa.ClinicJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -45,7 +45,6 @@ public class ClinicRepositoryAdapter implements ClinicRepository {
         return clinicJpaRepository.findClinicByRegistrationEmail(userEmail)
                 .orElseThrow(() -> new ResourcesNotFoundException(UserType.CLINIC, userEmail));
     }
-
 
 }
 

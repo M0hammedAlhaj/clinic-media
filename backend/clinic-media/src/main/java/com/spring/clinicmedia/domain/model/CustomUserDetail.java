@@ -50,6 +50,7 @@ public class    CustomUserDetail implements UserDetails {
 
     public boolean isActive() {
         UserRepository<User> userRepository = userRepositoryDispatcher.getRepository(registration.getType());
-        return userRepository.getUserByUserEmail(registration.getEmail()).isActive();
+        return userRepository.
+                getUserByUserEmail(registration.getEmail()).isActive();
     }
 }

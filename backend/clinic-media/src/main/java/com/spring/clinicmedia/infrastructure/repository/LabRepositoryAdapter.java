@@ -4,7 +4,7 @@ import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.user.Lab;
 import com.spring.clinicmedia.domain.port.repository.LabRepository;
-import com.spring.clinicmedia.infrastructure.repositoryJpa.LabJpaRepository;
+import com.spring.clinicmedia.infrastructure.Jpa.LabJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

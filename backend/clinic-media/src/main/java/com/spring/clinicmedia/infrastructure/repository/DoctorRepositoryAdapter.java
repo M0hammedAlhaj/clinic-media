@@ -4,7 +4,7 @@ import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.user.Doctor;
 import com.spring.clinicmedia.domain.port.repository.DoctorRepository;
-import com.spring.clinicmedia.infrastructure.repositoryJpa.DoctorJpaRepository;
+import com.spring.clinicmedia.infrastructure.Jpa.DoctorJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -43,4 +43,10 @@ public class DoctorRepositoryAdapter implements DoctorRepository {
         return doctorJpaRepository.findByRegistrationEmail(userEmail)
                 .orElseThrow(() -> new ResourcesNotFoundException(UserType.DOCTOR, userEmail));
     }
+
+    @Override
+    public boolean existsDoctorInClinic(long doctorId,long clinicId) {
+        return doctorJpaRepository.existsDoctorByClinicId(doctorId,clinicId);
+    }
+
 }

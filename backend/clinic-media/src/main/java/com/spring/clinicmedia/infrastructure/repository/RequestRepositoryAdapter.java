@@ -3,7 +3,7 @@ package com.spring.clinicmedia.infrastructure.repository;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.Request;
 import com.spring.clinicmedia.domain.port.repository.RequestRepository;
-import com.spring.clinicmedia.infrastructure.repositoryJpa.RequestJpaRepository;
+import com.spring.clinicmedia.infrastructure.Jpa.RequestJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

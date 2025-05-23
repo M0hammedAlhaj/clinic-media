@@ -4,4 +4,5 @@ import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
 
 public interface ClinicRepository extends UserRepository<Clinic> {
 
+
 }

@@ -36,8 +36,11 @@ public class DoctorController {
     public ResponseEntity<List<RequestResponse>> getDoctorReceivedRequests(@AuthenticationPrincipal CustomUserDetail user
             , @RequestParam int pageNumber) {
 
-        List<Request> requests = requestFetcher.execute(user.getUserId(), UserType.DOCTOR, pageNumber);
+        List<Request> requests = requestFetcher.execute(user.getUserId(),
+                UserType.DOCTOR,
+                pageNumber);
         return ResponseEntity.ok(RequestResponseMapper.createFromList(requests));
     }
+
 
 }
