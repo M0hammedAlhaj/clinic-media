@@ -1,5 +1,6 @@
-package com.spring.clinicmedia.application;
+package com.spring.clinicmedia.application.request;
 
+import com.spring.clinicmedia.domain.exception.request.RequestAlreadyExistsException;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.Request;
 import com.spring.clinicmedia.domain.model.enitity.RequestStatus;
@@ -34,6 +35,9 @@ public class DoctorClinicRequestService {
             userActivationValidator.validate(doctorId, UserType.DOCTOR);
         } else {
             userActivationValidator.validate(clinicId, UserType.CLINIC);
+        }
+        if (doctorRepository.existsDoctorInClinic(doctorId, clinicId)) {
+            throw new RequestAlreadyExistsException("Request Already Exists");
         }
 
         validator.validateRequestDoesNotExist(clinicId, doctorId, senderType);

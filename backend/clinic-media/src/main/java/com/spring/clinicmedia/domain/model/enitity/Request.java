@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Table(
         name = "clinic_doctor_requests",
         uniqueConstraints = @UniqueConstraint(
-                columnNames = {"clinic_id", "doctor_id", "sender"}))
+                columnNames = {"clinic_id", "doctor_id"}))
 @NoArgsConstructor
 @AllArgsConstructor
 public class Request {

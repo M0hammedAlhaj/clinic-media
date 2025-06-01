@@ -1,5 +1,6 @@
 package com.spring.clinicmedia.infrastructure.repository;
 
+import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.Request;
 import com.spring.clinicmedia.domain.port.repository.RequestRepository;
@@ -18,8 +19,15 @@ public class RequestRepositoryAdapter implements RequestRepository {
     private final RequestJpaRepository requestJpaRepository;
 
     @Override
-    public void save(Request request) {
-        requestJpaRepository.save(request);
+    public Request save(Request request) {
+
+        return requestJpaRepository.save(request);
+    }
+
+    @Override
+    public Request getById(Long id) {
+        return requestJpaRepository.findById(id)
+                .orElseThrow(()-> new ResourcesNotFoundException("Request not found"));
     }
 
     @Override
@@ -35,6 +43,11 @@ public class RequestRepositoryAdapter implements RequestRepository {
             return requestJpaRepository.findRequestsByClinicUserIdAndSender(senderId, sender, pageable);
 
         return requestJpaRepository.findRequestsByDoctorUserIdAndSender(senderId, sender, pageable);
+    }
+
+    @Override
+    public Optional<Request> findByClinicIdAndDoctorID(long clinicId, long doctorId) {
+        return requestJpaRepository.findByClinicUserIdAndDoctorUserId(clinicId, doctorId);
     }
 
 

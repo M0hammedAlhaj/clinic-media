@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -60,4 +61,11 @@ public class AdminController {
         return ResponseEntity.ok("Successful Activated User");
     }
 
+    @PostMapping("/insurances")
+    public ResponseEntity<String> createInsurance(@RequestBody String insurance) {
+        URI insuranceName = URI.create(insurance);
+
+        return ResponseEntity.created(insuranceName).
+                body("Insurance created with ID: " + insurance);
+    }
 }

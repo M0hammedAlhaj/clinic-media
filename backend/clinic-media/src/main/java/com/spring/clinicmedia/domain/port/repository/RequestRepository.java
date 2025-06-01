@@ -7,11 +7,11 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.Optional;
 
-public interface RequestRepository {
-
-    void save(Request request);
+public interface RequestRepository extends BaseRepository<Request, Long> {
 
     Optional<Request> findByClinicIdAndDoctorIdAndSender(long clinicId, long doctorId, UserType sender);
 
     Page<Request> findRequestsBySenderIdAndSenderType(long senderId, UserType sender, Pageable pageable);
+
+    Optional<Request> findByClinicIdAndDoctorID(long clinicId, long doctorId);
 }

@@ -1,11 +1,14 @@
 package com.spring.clinicmedia.presentation.controller;
 
-import com.spring.clinicmedia.application.DoctorClinicRequestService;
-import com.spring.clinicmedia.application.RequestFetcher;
+import com.spring.clinicmedia.application.insurance.UserAddInsurance;
+import com.spring.clinicmedia.application.request.DoctorClinicRequestService;
+import com.spring.clinicmedia.application.request.RequestFetcher;
+import com.spring.clinicmedia.application.request.RequestStatusChangeHandler;
 import com.spring.clinicmedia.domain.model.CustomUserDetail;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.Request;
-import com.spring.clinicmedia.presentation.dto.RequestResponse;
+import com.spring.clinicmedia.presentation.dto.request.RequestChangeStatus;
+import com.spring.clinicmedia.presentation.dto.request.RequestResponse;
 import com.spring.clinicmedia.presentation.map.RequestResponseMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,9 +26,12 @@ public class DoctorController {
 
     private final RequestFetcher requestFetcher;
 
+    private final RequestStatusChangeHandler requestStatusChangeHandler;
+
+    private final UserAddInsurance userAddInsurance;
+
     @PutMapping("/clinic/{clinicId}")
-    public ResponseEntity<String> doctorsAddClinic(@PathVariable int clinicId,
-                                                   @AuthenticationPrincipal CustomUserDetail user) {
+    public ResponseEntity<String> doctorsAddClinic(@PathVariable int clinicId, @AuthenticationPrincipal CustomUserDetail user) {
 
         doctorClinicRequestService.createRequest(user.getUserId(), clinicId, UserType.DOCTOR);
 
@@ -33,14 +39,31 @@ public class DoctorController {
     }
 
     @GetMapping("/requests")
-    public ResponseEntity<List<RequestResponse>> getDoctorReceivedRequests(@AuthenticationPrincipal CustomUserDetail user
-            , @RequestParam int pageNumber) {
+    public ResponseEntity<List<RequestResponse>> getDoctorReceivedRequests(@AuthenticationPrincipal CustomUserDetail user, @RequestParam int pageNumber) {
 
-        List<Request> requests = requestFetcher.execute(user.getUserId(),
-                UserType.DOCTOR,
-                pageNumber);
+        List<Request> requests = requestFetcher.execute(user.getUserId(), UserType.DOCTOR, pageNumber);
         return ResponseEntity.ok(RequestResponseMapper.createFromList(requests));
     }
 
+    @PutMapping("/requests/{requestId}/status")
+    public ResponseEntity<String> changeStataRequest(@AuthenticationPrincipal CustomUserDetail doctor,
+                                                     @PathVariable long requestId,
+                                                     @RequestBody RequestChangeStatus requestStatus) {
 
+        requestStatusChangeHandler.execute(requestId,
+                doctor.getUserId(),
+                UserType.DOCTOR,
+                requestStatus.getStatus());
+        return ResponseEntity.ok("Request status changed");
+    }
+
+    @PutMapping("/insurance/{insuranceName}")
+    public ResponseEntity<String> doctorAddInsurance(@PathVariable String insuranceName, @AuthenticationPrincipal CustomUserDetail user) {
+
+        userAddInsurance.execute(UserType.DOCTOR, insuranceName, user.getUserId());
+
+        return ResponseEntity.ok("Doctor added");
+    }
+
+    
 }

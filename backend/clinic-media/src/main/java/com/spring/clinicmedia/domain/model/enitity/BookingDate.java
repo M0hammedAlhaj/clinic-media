@@ -1,5 +1,6 @@
 package com.spring.clinicmedia.domain.model.enitity;
 
+import com.spring.clinicmedia.domain.model.BookingDateState;
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
 import com.spring.clinicmedia.domain.model.enitity.user.Doctor;
 import jakarta.persistence.*;
@@ -38,6 +39,6 @@ public class BookingDate {
     private LocalDateTime bookingDateEnding;
 
     @Column(name = "booking_date_status")
-    private String bookingDateStatus;
-
+    @Enumerated(EnumType.STRING)
+    private BookingDateState bookingDateStatus;
 }

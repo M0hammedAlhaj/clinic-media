@@ -24,7 +24,7 @@ import java.util.List;
 public class Doctor extends User {
 
 
-    @ManyToMany(mappedBy = "doctors")
+    @ManyToMany(mappedBy = "doctors",cascade = CascadeType.MERGE)
     private List<Clinic> clinics;
 
     @ManyToOne

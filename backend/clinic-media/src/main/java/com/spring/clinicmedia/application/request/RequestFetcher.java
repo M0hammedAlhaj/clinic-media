@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.application;
+package com.spring.clinicmedia.application.request;
 
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.Request;

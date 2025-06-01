@@ -1,8 +1,8 @@
 package com.spring.clinicmedia.presentation.controller;
 
-import com.spring.clinicmedia.domain.exception.EmailAlreadyExistsException;
-import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
-import com.spring.clinicmedia.domain.exception.UserAccountNotActivation;
+import com.spring.clinicmedia.domain.exception.*;
+import com.spring.clinicmedia.domain.exception.booking.BookingConflictException;
+import com.spring.clinicmedia.domain.exception.booking.InvalidBookingDateException;
 import com.spring.clinicmedia.presentation.exception.PasswordMismatchException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,15 +27,18 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(PasswordMismatchException.class)
-    public ResponseEntity<HashMap<String, Object>> handlePasswordMismatch(PasswordMismatchException ex) {
+    private HashMap<String, Object> buildErrorResponse(HttpStatus status, String message) {
         HashMap<String, Object> response = new HashMap<>();
         response.put("timestamp", LocalDateTime.now());
-        response.put("status", HttpStatus.BAD_REQUEST.value());
-        response.put("error", "Bad Request");
-        response.put("message", ex.getMessage());
+        response.put("status", status.value());
+        response.put("error", status.getReasonPhrase());
+        response.put("message", message);
+        return response;
+    }
 
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    @ExceptionHandler(PasswordMismatchException.class)
+    public ResponseEntity<HashMap<String, Object>> handlePasswordMismatch(PasswordMismatchException ex) {
+        return new ResponseEntity<>(buildErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(EmailAlreadyExistsException.class)
@@ -58,6 +61,34 @@ public class GlobalExceptionHandler {
         response.put("message", ex.getMessage());
 
         return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(DoctorNotInClinicException.class)
+    public ResponseEntity<HashMap<String, Object>> handleDoctorNotInClinic(DoctorNotInClinicException ex) {
+        return new ResponseEntity<>(buildErrorResponse(HttpStatus.BAD_REQUEST,
+                ex.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InvalidBookingDateException.class)
+    public ResponseEntity<HashMap<String, Object>> handleInvalidBookingDate(InvalidBookingDateException ex) {
+        HashMap<String, Object> response = new HashMap<>();
+        response.put("timestamp", LocalDateTime.now());
+        response.put("status", HttpStatus.BAD_REQUEST.value());
+        response.put("error", "Invalid Booking Date");
+        response.put("message", ex.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(BookingConflictException.class)
+    public ResponseEntity<HashMap<String, Object>> handleBookingConflict(BookingConflictException ex) {
+        HashMap<String, Object> response = new HashMap<>();
+        response.put("timestamp", LocalDateTime.now());
+        response.put("status", HttpStatus.CONFLICT.value());
+        response.put("error", "Booking Conflict");
+        response.put("message", ex.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
 

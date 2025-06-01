@@ -22,4 +22,6 @@ public interface RequestJpaRepository extends JpaRepository<Request, Long> {
     Page<Request> findRequestsByDoctorUserIdAndSender(long senderId,
                                                       UserType sender,
                                                       Pageable pageable);
+
+    Optional<Request> findByClinicUserIdAndDoctorUserId(long clinicId, long doctorId);
 }

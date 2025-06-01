@@ -43,7 +43,7 @@ public class Clinic extends User {
             inverseJoinColumns = @JoinColumn(name = "clinic_id"))
     private List<Insurance> insurances;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "CLINCES_DOCTORS",
             joinColumns = @JoinColumn(name = "clinic_id"),
             inverseJoinColumns = @JoinColumn(name = "doctor_id"))

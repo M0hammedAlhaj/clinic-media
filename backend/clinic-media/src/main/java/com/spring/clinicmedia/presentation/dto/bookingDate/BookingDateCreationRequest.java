@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.presentation.map;
+package com.spring.clinicmedia.presentation.dto.bookingDate;
 
 import lombok.Data;
 
@@ -10,6 +10,5 @@ public class BookingDateCreationRequest {
     private LocalDateTime startBookingDate;
 
     private LocalDateTime endBookingDate;
-
 
 }
