@@ -6,4 +6,8 @@ public class ResourcesAlreadyExists extends RuntimeException {
         super(String.format("%s already exists by %s ", c.getName(), id));
     }
 
+    public ResourcesAlreadyExists(String message,String id) {
+
+        super(String.format("%s already exists by %s ", message, id));
+    }
 }

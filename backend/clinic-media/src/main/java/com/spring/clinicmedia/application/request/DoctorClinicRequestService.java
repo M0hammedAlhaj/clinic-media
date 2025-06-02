@@ -26,16 +26,18 @@ public class DoctorClinicRequestService {
     private final UserActivationValidator userActivationValidator;
 
     @Transactional
-    public void createRequest(long doctorId, long clinicId, UserType senderType) {
+    public void createRequest(long doctorId,
+                              long clinicId,
+                              UserType senderType) {
 
         Clinic clinic = clinicRepository.getUserById(clinicId);
         Doctor doctor = doctorRepository.getUserById(doctorId);
 
-        if (senderType.equals(UserType.DOCTOR)) {
-            userActivationValidator.validate(doctorId, UserType.DOCTOR);
-        } else {
-            userActivationValidator.validate(clinicId, UserType.CLINIC);
-        }
+
+        userActivationValidator.validate(doctorId, UserType.DOCTOR);
+
+        userActivationValidator.validate(clinicId, UserType.CLINIC);
+
         if (doctorRepository.existsDoctorInClinic(doctorId, clinicId)) {
             throw new RequestAlreadyExistsException("Request Already Exists");
         }

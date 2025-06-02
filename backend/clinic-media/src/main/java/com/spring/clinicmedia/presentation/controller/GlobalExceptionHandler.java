@@ -91,5 +91,14 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
+    @ExceptionHandler(ResourcesAlreadyExists.class)
+    public ResponseEntity<HashMap<String,Object>> handleResourcesAlreadyExists(ResourcesAlreadyExists ex) {
+        HashMap<String, Object> response = new HashMap<>();
+        response.put("timestamp", LocalDateTime.now());
+        response.put("status", HttpStatus.CONFLICT.value());
+        response.put("error", "Resource Already Exists");
+        response.put("message", ex.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
 
 }

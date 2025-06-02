@@ -8,8 +8,10 @@ import com.spring.clinicmedia.infrastructure.Jpa.ClinicJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -44,6 +46,18 @@ public class ClinicRepositoryAdapter implements ClinicRepository {
     public Clinic getUserByUserEmail(String userEmail) {
         return clinicJpaRepository.findClinicByRegistrationEmail(userEmail)
                 .orElseThrow(() -> new ResourcesNotFoundException(UserType.CLINIC, userEmail));
+    }
+
+    @Override
+    public List<Clinic> getClinicsByFilter(Pageable pageable,
+                                           Specification<Clinic> specification) {
+        Page<Clinic> clinicsPage = clinicJpaRepository.findAll(specification, pageable);
+
+        if (clinicsPage.isEmpty()) {
+            throw new ResourcesNotFoundException(UserType.CLINIC, specification.toString());
+        }
+
+        return clinicsPage.getContent();
     }
 
 }

@@ -1,11 +1,13 @@
 package com.spring.clinicmedia.presentation.controller;
 
+import com.spring.clinicmedia.application.insurance.InsuranceCreation;
 import com.spring.clinicmedia.application.user.ActivateUser;
 import com.spring.clinicmedia.application.user.profile.ClinicProfileFetcher;
 import com.spring.clinicmedia.application.user.profile.DoctorProfileFetcher;
 import com.spring.clinicmedia.application.user.profile.InactiveAccountFetcher;
 import com.spring.clinicmedia.application.user.profile.LabProfileFetcher;
 import com.spring.clinicmedia.domain.model.UserType;
+import com.spring.clinicmedia.presentation.dto.InsuranceRequest;
 import com.spring.clinicmedia.presentation.dto.admin.InactiveAccountResponse;
 import com.spring.clinicmedia.presentation.dto.profile.ClinicProfile;
 import com.spring.clinicmedia.presentation.dto.profile.DoctorProfile;
@@ -31,6 +33,8 @@ public class AdminController {
     private final LabProfileFetcher labProfileFetcher;
 
     private final ActivateUser activateUser;
+
+    private final InsuranceCreation insuranceCreation;
 
     @GetMapping("/users/inactive-account")
     public ResponseEntity<List<InactiveAccountResponse>> getAccountNotActive(@RequestParam UserType userType,
@@ -62,10 +66,12 @@ public class AdminController {
     }
 
     @PostMapping("/insurances")
-    public ResponseEntity<String> createInsurance(@RequestBody String insurance) {
-        URI insuranceName = URI.create(insurance);
+    public ResponseEntity<String> createInsurance(@RequestBody InsuranceRequest insurance) {
+
+        URI insuranceName = URI.create(insuranceCreation.execute(insurance.getInsurance()));
 
         return ResponseEntity.created(insuranceName).
-                body("Insurance created with ID: " + insurance);
+                body("Insurance created with ID: " + insurance.getInsurance());
     }
+
 }

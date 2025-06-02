@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.infrastructure.jwt.validation;
+package com.spring.clinicmedia.infrastructure.validation.jwt;
 
 import com.spring.clinicmedia.domain.port.Handler;
 import com.spring.clinicmedia.domain.port.repository.RegistrationRepository;
