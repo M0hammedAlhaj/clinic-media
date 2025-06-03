@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @Setter
-public class    CustomUserDetail implements UserDetails {
+public class CustomUserDetail implements UserDetails {
 
     private final Registration registration;
 
