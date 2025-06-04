@@ -18,6 +18,7 @@ public class FilterSpecification implements Specification<Clinic> {
 
     private String location;
     private String nameInsurance;
+    private String specialty;
 
     @Override
     public Predicate toPredicate(Root<Clinic> root,
@@ -26,7 +27,6 @@ public class FilterSpecification implements Specification<Clinic> {
 
         List<Predicate> predicates = new ArrayList<>();
 
-        // Always filter active clinics
         predicates.add(criteriaBuilder.equal(root.get("isActive"), true));
 
         if (location != null) {
@@ -41,6 +41,14 @@ public class FilterSpecification implements Specification<Clinic> {
                     root.join("insurances").get("insuranceName"),
                     nameInsurance
             ));
+        }
+
+        if (specialty != null) {
+            predicates.add(criteriaBuilder.equal(
+                    root.join("specialities").get("speciality_name"), specialty)
+
+            );
+
         }
 
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));

@@ -65,9 +65,9 @@ public class BookingDateCreation {
 
         activationValidator.validate(doctorId, UserType.DOCTOR);
 
-        Clinic clinic = clinicRepository.getUserById(clinicId);
+        Clinic clinic = clinicRepository.getUserByIdOrElseThrow(clinicId);
 
-        Doctor doctor = doctorRepository.getUserById(doctorId);
+        Doctor doctor = doctorRepository.getUserByIdOrElseThrow(doctorId);
 
         LocalDateTime startBookingDate = bookingDateCreationRequest.
                 getStartBookingDate();

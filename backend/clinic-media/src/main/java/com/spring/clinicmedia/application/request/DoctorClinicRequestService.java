@@ -30,8 +30,8 @@ public class DoctorClinicRequestService {
                               long clinicId,
                               UserType senderType) {
 
-        Clinic clinic = clinicRepository.getUserById(clinicId);
-        Doctor doctor = doctorRepository.getUserById(doctorId);
+        Clinic clinic = clinicRepository.getUserByIdOrElseThrow(clinicId);
+        Doctor doctor = doctorRepository.getUserByIdOrElseThrow(doctorId);
 
 
         userActivationValidator.validate(doctorId, UserType.DOCTOR);

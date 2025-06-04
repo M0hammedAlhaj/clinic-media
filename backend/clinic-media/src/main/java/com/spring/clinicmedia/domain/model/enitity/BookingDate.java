@@ -41,4 +41,9 @@ public class BookingDate {
     @Column(name = "booking_date_status")
     @Enumerated(EnumType.STRING)
     private BookingDateState bookingDateStatus;
+
+
+    @OneToOne
+    private Location location;
+
 }

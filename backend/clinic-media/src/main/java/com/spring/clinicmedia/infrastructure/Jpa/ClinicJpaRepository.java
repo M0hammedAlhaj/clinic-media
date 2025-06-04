@@ -20,4 +20,5 @@ public interface ClinicJpaRepository extends JpaRepository<Clinic, Long>, JpaSpe
     Page<Clinic> findByIsActive(boolean active, Pageable pageable);
 
 
+    Optional<Clinic> searchBySpecialitiesSpecialityNameAndUserId(String specialityName, Long clinicId);
 }

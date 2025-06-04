@@ -25,8 +25,8 @@ public class LabRepositoryAdapter implements LabRepository {
     }
 
     @Override
-    public void saveUser(Lab user) {
-        labJpaRepository.save(user);
+    public Lab saveUser(Lab user) {
+        return labJpaRepository.save(user);
     }
 
     public Page<Lab> getUserByActive(boolean active, Pageable pageable) {
@@ -34,15 +34,20 @@ public class LabRepositoryAdapter implements LabRepository {
     }
 
     @Override
-    public Lab getUserById(Long id) {
+    public Lab getUserByIdOrElseThrow(Long id) {
         return labJpaRepository.findById(id)
                 .orElseThrow(() -> new ResourcesNotFoundException(UserType.LAB, id));
 
     }
 
     @Override
-    public Lab getUserByUserEmail(String userEmail) {
-        return labJpaRepository.findLabByRegistrationEmail(userEmail).orElseThrow(() -> new ResourcesNotFoundException(UserType.LAB, userEmail));
+    public Lab getUserByUserEmailOrElseThrow(String userEmail) {
+        return labJpaRepository.findLabByRegistrationEmail(userEmail).orElseThrow(() -> new ResourcesNotFoundException(Lab.class, userEmail));
+    }
+
+    @Override
+    public boolean existsByUserId(Long id) {
+        return labJpaRepository.existsById(id);
     }
 
 }

@@ -10,12 +10,13 @@ public interface UserRepository<T extends User> {
 
     Optional<T> findUserByEmail(String email);
 
-    void saveUser(T user);
+    T saveUser(T user);
 
     Page<T> getUserByActive(boolean active, Pageable pageable);
 
-    T getUserById(Long id);
+    T getUserByIdOrElseThrow(Long id);
 
-    T getUserByUserEmail(String userEmail);
+    T getUserByUserEmailOrElseThrow(String userEmail);
 
+    boolean existsByUserId(Long id);
 }

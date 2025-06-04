@@ -11,4 +11,6 @@ public class BookingDateCreationRequest {
 
     private LocalDateTime endBookingDate;
 
+    private String locationName;
+
 }

@@ -33,7 +33,7 @@ public class UserAddInsurance {
                 insuranceRepository.getById(insuranceName);
 
         if (userType.equals(UserType.PATIENT)) {
-            Patient patient = patientRepository.getUserById(userId);
+            Patient patient = patientRepository.getUserByIdOrElseThrow(userId);
 
             if (patient.getInsurances().isEmpty()) {
                 patient.setInsurances(new ArrayList<>());
@@ -43,7 +43,7 @@ public class UserAddInsurance {
         }
 
         if (userType.equals(UserType.CLINIC)) {
-            Clinic clinic = clinicRepository.getUserById(userId);
+            Clinic clinic = clinicRepository.getUserByIdOrElseThrow(userId);
             if (clinic.getInsurances().isEmpty()) {
                 clinic.setInsurances(new ArrayList<>());
             }

@@ -34,8 +34,8 @@ public class RequestStatusChangeHandler {
         boolean isNotSender = !request.getSender().equals(userChangeStatus);
         boolean isChanged = false;
 
-        Doctor doctor = doctorRepository.getUserById(request.getDoctor().getUserId());
-        Clinic clinic = clinicRepository.getUserById(request.getClinic().getUserId());
+        Doctor doctor = doctorRepository.getUserByIdOrElseThrow(request.getDoctor().getUserId());
+        Clinic clinic = clinicRepository.getUserByIdOrElseThrow(request.getClinic().getUserId());
 
         if (isDoctor && isNotSender) {
             if (request.getDoctor().getUserId().equals(userChangeId)) {

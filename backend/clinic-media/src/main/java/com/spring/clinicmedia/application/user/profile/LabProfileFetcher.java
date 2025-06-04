@@ -14,7 +14,7 @@ public class LabProfileFetcher {
     private final LabRepository labRepository;
 
     public LabProfile execute(long labId) {
-        Lab lab = labRepository.getUserById(labId);
+        Lab lab = labRepository.getUserByIdOrElseThrow(labId);
 
         return LabProfile.builder()
                 .email(lab.getRegistration().getEmail())

@@ -7,6 +7,7 @@ import com.spring.clinicmedia.application.user.profile.DoctorProfileFetcher;
 import com.spring.clinicmedia.application.user.profile.InactiveAccountFetcher;
 import com.spring.clinicmedia.application.user.profile.LabProfileFetcher;
 import com.spring.clinicmedia.domain.model.UserType;
+import com.spring.clinicmedia.infrastructure.mapping.ClinicProfileMapper;
 import com.spring.clinicmedia.presentation.dto.InsuranceRequest;
 import com.spring.clinicmedia.presentation.dto.admin.InactiveAccountResponse;
 import com.spring.clinicmedia.presentation.dto.profile.ClinicProfile;
@@ -45,7 +46,7 @@ public class AdminController {
 
     @GetMapping("/clinic-profile/{clinicId}")
     public ResponseEntity<ClinicProfile> fitchClinicProfile(@PathVariable int clinicId) {
-        return ResponseEntity.ok(clinicProfileFetcher.execute(clinicId));
+        return ResponseEntity.ok(ClinicProfileMapper.toClinicProfile(clinicProfileFetcher.execute(clinicId)));
     }
 
     @GetMapping("/doctor-profile/{doctorId}")

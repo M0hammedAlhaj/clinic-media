@@ -24,8 +24,8 @@ public class PatientRepositoryAdapter implements PatientRepository {
     }
 
     @Override
-    public void saveUser(Patient user) {
-        patientJpaRepository.save(user);
+    public Patient saveUser(Patient user) {
+        return patientJpaRepository.save(user);
     }
 
     public Page<Patient> getUserByActive(boolean active, Pageable pageable) {
@@ -33,16 +33,21 @@ public class PatientRepositoryAdapter implements PatientRepository {
     }
 
     @Override
-    public Patient getUserById(Long id) {
+    public Patient getUserByIdOrElseThrow(Long id) {
         return patientJpaRepository.findById(id)
                 .orElseThrow(() -> new ResourcesNotFoundException(UserType.PATIENT, id));
 
     }
 
     @Override
-    public Patient getUserByUserEmail(String userEmail) {
+    public Patient getUserByUserEmailOrElseThrow(String userEmail) {
         return patientJpaRepository.findByRegistrationEmail(userEmail)
-                .orElseThrow(() -> new ResourcesNotFoundException(UserType.PATIENT, userEmail));
+                .orElseThrow(() -> new ResourcesNotFoundException(Patient.class, userEmail));
+    }
+
+    @Override
+    public boolean existsByUserId(Long id) {
+        return patientJpaRepository.existsById(id);
     }
 
 }

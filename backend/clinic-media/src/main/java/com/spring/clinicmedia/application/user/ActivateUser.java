@@ -19,7 +19,8 @@ public class ActivateUser {
 
         UserRepository<User> userRepository = userRepositoryDispatcher.getRepository(userType);
 
-        userRepository.getUserById(userId).setActive(true);
+        userRepository.getUserByIdOrElseThrow(userId)
+                .setActive(true);
 
     }
 

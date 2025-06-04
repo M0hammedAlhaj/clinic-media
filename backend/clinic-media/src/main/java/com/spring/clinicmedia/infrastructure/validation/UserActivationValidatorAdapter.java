@@ -24,7 +24,7 @@ public class UserActivationValidatorAdapter implements UserActivationValidator {
 
         UserRepository<User> userRepository =
                 userRepositoryDispatcher.getRepository(userType);
-        User user = userRepository.getUserById(userId);
+        User user = userRepository.getUserByIdOrElseThrow(userId);
 
         if (!user.isActive()) {
             throw new UserAccountNotActivation("User Account is not activated");

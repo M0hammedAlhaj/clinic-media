@@ -27,8 +27,8 @@ public class ClinicRepositoryAdapter implements ClinicRepository {
     }
 
     @Override
-    public void saveUser(Clinic user) {
-        clinicJpaRepository.save(user);
+    public Clinic saveUser(Clinic user) {
+       return clinicJpaRepository.save(user);
     }
 
     @Override
@@ -37,15 +37,20 @@ public class ClinicRepositoryAdapter implements ClinicRepository {
     }
 
     @Override
-    public Clinic getUserById(Long id) {
+    public Clinic getUserByIdOrElseThrow(Long id) {
         return clinicJpaRepository.findById(id)
                 .orElseThrow(() -> new ResourcesNotFoundException(UserType.CLINIC, id));
     }
 
     @Override
-    public Clinic getUserByUserEmail(String userEmail) {
+    public Clinic getUserByUserEmailOrElseThrow(String userEmail) {
         return clinicJpaRepository.findClinicByRegistrationEmail(userEmail)
-                .orElseThrow(() -> new ResourcesNotFoundException(UserType.CLINIC, userEmail));
+                .orElseThrow(() -> new ResourcesNotFoundException(Clinic.class, userEmail));
+    }
+
+    @Override
+    public boolean existsByUserId(Long id) {
+        return existsByUserId(id);
     }
 
     @Override
@@ -54,10 +59,15 @@ public class ClinicRepositoryAdapter implements ClinicRepository {
         Page<Clinic> clinicsPage = clinicJpaRepository.findAll(specification, pageable);
 
         if (clinicsPage.isEmpty()) {
-            throw new ResourcesNotFoundException(UserType.CLINIC, specification.toString());
+            throw new ResourcesNotFoundException(Clinic.class, specification.toString());
         }
-
         return clinicsPage.getContent();
+    }
+
+
+    @Override
+    public Optional<Clinic> findClinicByIdAndSpecialityName(String specialityName, Long clinicId) {
+        return clinicJpaRepository.searchBySpecialitiesSpecialityNameAndUserId(specialityName, clinicId);
     }
 
 }

@@ -45,12 +45,12 @@ public class CustomUserDetail implements UserDetails {
     public Long getUserId() {
         UserRepository<User> userRepository = userRepositoryDispatcher.getRepository(registration.getType());
         return userRepository.
-                getUserByUserEmail(registration.getEmail()).getUserId();
+                getUserByUserEmailOrElseThrow(registration.getEmail()).getUserId();
     }
 
     public boolean isActive() {
         UserRepository<User> userRepository = userRepositoryDispatcher.getRepository(registration.getType());
         return userRepository.
-                getUserByUserEmail(registration.getEmail()).isActive();
+                getUserByUserEmailOrElseThrow(registration.getEmail()).isActive();
     }
 }

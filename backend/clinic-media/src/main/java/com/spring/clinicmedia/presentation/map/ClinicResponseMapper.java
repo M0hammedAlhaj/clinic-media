@@ -12,17 +12,22 @@ public class ClinicResponseMapper {
 
     public static List<ClinicResponse> createFrom(List<Clinic> clinics) {
         return clinics.stream()
-                .map(clinic -> ClinicResponse.builder()
-                        .clinicName(clinic.getRegistration().getName())
-                        .city(clinic.getClincLocations()
-                                .stream()
-                                .map(Location::getCountryName)
-                                .collect(Collectors.toList()))
-                        .speciality(clinic.getSpecialities()
-                                .stream()
-                                .map(Speciality::getSpecialityName)
-                                .collect(Collectors.toList()))
-                        .build())
+                .map(ClinicResponseMapper::createFrom)
                 .collect(Collectors.toList());
     }
+
+    public static ClinicResponse createFrom(Clinic clinic) {
+        return ClinicResponse.builder()
+                .clinicName(clinic.getRegistration().getName())
+                .city(clinic.getClincLocations()
+                        .stream()
+                        .map(Location::getCountryName)
+                        .collect(Collectors.toList()))
+                .speciality(clinic.getSpecialities()
+                        .stream()
+                        .map(Speciality::getSpecialityName)
+                        .collect(Collectors.toList()))
+                .build();
+    }
+
 }

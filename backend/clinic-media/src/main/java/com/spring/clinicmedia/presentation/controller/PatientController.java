@@ -1,15 +1,18 @@
 package com.spring.clinicmedia.presentation.controller;
 
 import com.spring.clinicmedia.application.ClinicsFetcher;
+import com.spring.clinicmedia.application.DoctorBookingDateFetcher;
+import com.spring.clinicmedia.domain.model.BookingDateState;
+import com.spring.clinicmedia.domain.model.CustomUserDetail;
 import com.spring.clinicmedia.presentation.dto.ClinicResponse;
 import com.spring.clinicmedia.presentation.dto.FilterSpecification;
+import com.spring.clinicmedia.presentation.dto.PatientClinicView;
 import com.spring.clinicmedia.presentation.map.ClinicResponseMapper;
+import com.spring.clinicmedia.presentation.map.PatientClinicViewMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +23,7 @@ public class PatientController {
 
     private final ClinicsFetcher clinicsFetcher;
 
+    private final DoctorBookingDateFetcher doctorBookingDateFetcher;
 
     @GetMapping("/clinics")
     public ResponseEntity<List<ClinicResponse>> fitchClinics(@RequestParam(required = false) String insuranceName,
@@ -36,6 +40,15 @@ public class PatientController {
         return ResponseEntity.ok(ClinicResponseMapper.createFrom(
                 clinicsFetcher.getClinics(pageNumber,
                         pageSize, filterSpecification)));
+    }
+
+    @GetMapping("/clinics/{clinicId}")
+    public ResponseEntity<PatientClinicView> getClinic(@PathVariable long clinicId,
+                                                       @AuthenticationPrincipal CustomUserDetail patient) {
+
+        return ResponseEntity
+                .ok(PatientClinicViewMapper
+                        .createFrom(doctorBookingDateFetcher.execute(clinicId, BookingDateState.WAITING)));
     }
 
 }

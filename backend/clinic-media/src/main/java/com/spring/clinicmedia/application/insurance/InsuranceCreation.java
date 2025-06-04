@@ -1,6 +1,6 @@
 package com.spring.clinicmedia.application.insurance;
 
-import com.spring.clinicmedia.domain.exception.ResourcesAlreadyExists;
+import com.spring.clinicmedia.domain.exception.ResourceAlreadyExistsException;
 import com.spring.clinicmedia.domain.model.enitity.Insurance;
 import com.spring.clinicmedia.domain.port.repository.InsuranceRepository;
 import lombok.AllArgsConstructor;
@@ -17,7 +17,7 @@ public class InsuranceCreation {
     public String execute(String name) {
 
         insuranceRepository.findInsuranceByInsuranceNumber(name).ifPresent((i) -> {
-            throw new ResourcesAlreadyExists(Insurance.class, name);
+            throw new ResourceAlreadyExistsException(Insurance.class, name);
         });
 
         return insuranceRepository.save(Insurance.builder()

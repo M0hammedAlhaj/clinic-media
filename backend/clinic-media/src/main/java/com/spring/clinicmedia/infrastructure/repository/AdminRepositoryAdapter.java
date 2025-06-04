@@ -24,8 +24,8 @@ public class AdminRepositoryAdapter implements AdminRepository {
     }
 
     @Override
-    public void saveUser(Admin user) {
-        adminJpaRepository.save(user);
+    public Admin saveUser(Admin user) {
+        return adminJpaRepository.save(user);
     }
 
     public Page<Admin> getUserByActive(boolean active, Pageable pageable) {
@@ -33,15 +33,21 @@ public class AdminRepositoryAdapter implements AdminRepository {
     }
 
     @Override
-    public Admin getUserById(Long id) {
+    public Admin getUserByIdOrElseThrow(Long id) {
         return adminJpaRepository.findById(id)
                 .orElseThrow(() -> new ResourcesNotFoundException(UserType.ADMIN, id));
     }
 
     @Override
-    public Admin getUserByUserEmail(String userEmail) {
+    public Admin getUserByUserEmailOrElseThrow(String userEmail) {
         return adminJpaRepository.findByRegistrationEmail(userEmail)
-                .orElseThrow(() -> new ResourcesNotFoundException(UserType.ADMIN, userEmail));
+                .orElseThrow(() ->
+                        new ResourcesNotFoundException(Admin.class, userEmail));
+    }
+
+    @Override
+    public boolean existsByUserId(Long id) {
+        return adminJpaRepository.existsById(id);
     }
 
 }

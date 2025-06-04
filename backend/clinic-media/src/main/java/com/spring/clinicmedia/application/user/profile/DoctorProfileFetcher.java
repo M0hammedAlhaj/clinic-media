@@ -15,7 +15,7 @@ public class DoctorProfileFetcher {
     public DoctorProfile execute(long userId) {
 
 
-        Doctor doctor = doctorUserRepository.getUserById(userId);
+        Doctor doctor = doctorUserRepository.getUserByIdOrElseThrow(userId);
 
         return DoctorProfile.builder()
                 .userName(doctor.getRegistration().getName())

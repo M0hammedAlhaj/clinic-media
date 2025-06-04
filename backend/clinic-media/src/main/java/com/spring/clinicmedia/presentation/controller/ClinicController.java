@@ -2,6 +2,7 @@ package com.spring.clinicmedia.presentation.controller;
 
 
 import com.spring.clinicmedia.application.BookingDateCreation;
+import com.spring.clinicmedia.application.ClinicAddSpeciality;
 import com.spring.clinicmedia.application.insurance.UserAddInsurance;
 import com.spring.clinicmedia.application.request.DoctorClinicRequestService;
 import com.spring.clinicmedia.application.request.RequestFetcher;
@@ -10,11 +11,13 @@ import com.spring.clinicmedia.domain.model.CustomUserDetail;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.BookingDate;
 import com.spring.clinicmedia.domain.model.enitity.Request;
+import com.spring.clinicmedia.presentation.dto.ClinicResponse;
 import com.spring.clinicmedia.presentation.dto.bookingDate.BookingDateCreationRequest;
 import com.spring.clinicmedia.presentation.dto.bookingDate.BookingDateCreationResponse;
 import com.spring.clinicmedia.presentation.dto.request.RequestChangeStatus;
 import com.spring.clinicmedia.presentation.dto.request.RequestResponse;
 import com.spring.clinicmedia.presentation.map.BookingDateCreationResponseMapper;
+import com.spring.clinicmedia.presentation.map.ClinicResponseMapper;
 import com.spring.clinicmedia.presentation.map.RequestResponseMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +40,8 @@ public class ClinicController {
     private final RequestStatusChangeHandler requestStatusChangeHandler;
 
     private final UserAddInsurance addInsurance;
+
+    private final ClinicAddSpeciality clinicAddSpeciality;
 
     @PutMapping("/doctor/{doctorId}")
     public ResponseEntity<String> doctorsAddClinic(@PathVariable int doctorId,
@@ -89,5 +94,15 @@ public class ClinicController {
         addInsurance.execute(UserType.CLINIC, insuranceName, clinic.getUserId());
 
         return ResponseEntity.ok("Add Insurance");
+    }
+
+    @PutMapping("/speciality/{specialityName}")
+    public ResponseEntity<ClinicResponse> clinicAddSpecie(
+            @AuthenticationPrincipal CustomUserDetail clinic,
+            @PathVariable String specialityName) {
+
+        return ResponseEntity.ok(
+                ClinicResponseMapper.createFrom(clinicAddSpeciality.addSpeciality(specialityName, clinic.getUserId())));
+
     }
 }
