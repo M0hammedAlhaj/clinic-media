@@ -1,7 +1,7 @@
 package com.spring.clinicmedia.application.request;
 
 import com.spring.clinicmedia.domain.model.UserType;
-import com.spring.clinicmedia.domain.model.enitity.Request;
+import com.spring.clinicmedia.domain.model.enitity.ClinicDoctorRequest;
 import com.spring.clinicmedia.domain.port.repository.RequestRepository;
 import com.spring.clinicmedia.domain.port.validator.UserActivationValidator;
 import lombok.AllArgsConstructor;
@@ -18,14 +18,13 @@ public class RequestFetcher {
 
     private final UserActivationValidator userActivationValidator;
 
-    public List<Request> execute(Long userId,
-                                 UserType sender, int pageNumber) {
+    public List<ClinicDoctorRequest> execute(Long userId,
+                                             UserType sender, int pageNumber) {
 
         userActivationValidator.validate(userId, sender);
 
         return requestRepository.findRequestsBySenderIdAndSenderType(userId,
-                        sender, PageRequest.of(pageNumber, 5))
-                .getContent();
-
+                sender, PageRequest.of(pageNumber, 5));
     }
+
 }

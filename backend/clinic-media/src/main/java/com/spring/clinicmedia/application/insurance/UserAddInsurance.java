@@ -30,7 +30,7 @@ public class UserAddInsurance {
             , Long userId) {
 
         Insurance insurance =
-                insuranceRepository.getById(insuranceName);
+                insuranceRepository.getByIdOrElseThrow(insuranceName);
 
         if (userType.equals(UserType.PATIENT)) {
             Patient patient = patientRepository.getUserByIdOrElseThrow(userId);

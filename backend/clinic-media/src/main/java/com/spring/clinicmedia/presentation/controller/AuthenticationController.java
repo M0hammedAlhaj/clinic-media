@@ -1,7 +1,7 @@
 package com.spring.clinicmedia.presentation.controller;
 
-import com.spring.clinicmedia.application.user.registaration.CreateAccount;
-import com.spring.clinicmedia.application.user.registaration.Login;
+import com.spring.clinicmedia.application.user.authentication.CreateAccount;
+import com.spring.clinicmedia.application.user.authentication.Login;
 import com.spring.clinicmedia.domain.command.UserCreationCommand;
 import com.spring.clinicmedia.domain.result.UserCreationResult;
 import com.spring.clinicmedia.domain.result.UserLoginResult;

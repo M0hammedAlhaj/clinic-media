@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.application;
+package com.spring.clinicmedia.application.clinic;
 
 import com.spring.clinicmedia.domain.exception.ResourceAlreadyExistsException;
 import com.spring.clinicmedia.domain.model.enitity.Speciality;
@@ -22,18 +22,21 @@ public class ClinicAddSpeciality {
     @Transactional
     public Clinic addSpeciality(String specialityName, Long clinicId) {
 
-        Speciality speciality = specialityRepository.getById(specialityName);
+        Speciality speciality = specialityRepository.getByIdOrElseThrow(specialityName);
 
         clinicRepository.findClinicByIdAndSpecialityName(specialityName, clinicId)
                 .ifPresent(clinic -> {
-                    throw new ResourceAlreadyExistsException(Clinic.class, specialityName);
+                    throw new ResourceAlreadyExistsException(Clinic.class,
+                            specialityName);
                 });
+
         Clinic clinic = clinicRepository.getUserByIdOrElseThrow(clinicId);
 
         if (clinic.getSpecialities().isEmpty()) {
             clinic.setSpecialities(new ArrayList<>());
         }
-        clinic.getSpecialities().add(speciality);
+        clinic.getSpecialities()
+                .add(speciality);
 
         return clinicRepository.saveUser(clinic);
     }

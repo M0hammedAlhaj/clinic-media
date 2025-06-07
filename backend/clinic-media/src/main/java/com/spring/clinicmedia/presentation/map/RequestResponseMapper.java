@@ -1,6 +1,6 @@
 package com.spring.clinicmedia.presentation.map;
 
-import com.spring.clinicmedia.domain.model.enitity.Request;
+import com.spring.clinicmedia.domain.model.enitity.ClinicDoctorRequest;
 import com.spring.clinicmedia.presentation.dto.request.RequestResponse;
 
 import java.util.List;
@@ -8,19 +8,19 @@ import java.util.List;
 public class RequestResponseMapper {
 
 
-    public static RequestResponse createFrom(Request request) {
+    public static RequestResponse createFrom(ClinicDoctorRequest clinicDoctorRequest) {
         return RequestResponse.builder()
-                .requestId(request.getRequestId())
-                .clinicName(request
+                .requestId(clinicDoctorRequest.getRequestId())
+                .clinicName(clinicDoctorRequest
                         .getClinic()
                         .getRegistration()
                         .getName())
-                .status(request.getStatus())
+                .status(clinicDoctorRequest.getStatus())
                 .build();
     }
 
-    public static List<RequestResponse> createFromList(List<Request> requests) {
-        return requests.stream()
+    public static List<RequestResponse> createFromList(List<ClinicDoctorRequest> clinicDoctorRequests) {
+        return clinicDoctorRequests.stream()
                 .map(RequestResponseMapper::createFrom)
                 .toList();
     }

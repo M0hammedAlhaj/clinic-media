@@ -2,7 +2,7 @@ package com.spring.clinicmedia.application.request;
 
 import com.spring.clinicmedia.domain.exception.request.RequestStatusChangeNotAllowedException;
 import com.spring.clinicmedia.domain.model.UserType;
-import com.spring.clinicmedia.domain.model.enitity.Request;
+import com.spring.clinicmedia.domain.model.enitity.ClinicDoctorRequest;
 import com.spring.clinicmedia.domain.model.enitity.RequestStatus;
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
 import com.spring.clinicmedia.domain.model.enitity.user.Doctor;
@@ -26,27 +26,27 @@ public class RequestStatusChangeHandler {
     @Transactional
     public void execute(long requestId, long userChangeId, UserType userChangeStatus, RequestStatus requestStatus) {
 
-        Request request = requestRepository.getById(requestId);
+        ClinicDoctorRequest clinicDoctorRequest = requestRepository.getByIdOrElseThrow(requestId);
 
 
         boolean isDoctor = userChangeStatus.equals(UserType.DOCTOR);
         boolean isClinic = userChangeStatus.equals(UserType.CLINIC);
-        boolean isNotSender = !request.getSender().equals(userChangeStatus);
+        boolean isNotSender = !clinicDoctorRequest.getSender().equals(userChangeStatus);
         boolean isChanged = false;
 
-        Doctor doctor = doctorRepository.getUserByIdOrElseThrow(request.getDoctor().getUserId());
-        Clinic clinic = clinicRepository.getUserByIdOrElseThrow(request.getClinic().getUserId());
+        Doctor doctor = doctorRepository.getUserByIdOrElseThrow(clinicDoctorRequest.getDoctor().getUserId());
+        Clinic clinic = clinicRepository.getUserByIdOrElseThrow(clinicDoctorRequest.getClinic().getUserId());
 
         if (isDoctor && isNotSender) {
-            if (request.getDoctor().getUserId().equals(userChangeId)) {
-                request.setStatus(requestStatus);
+            if (clinicDoctorRequest.getDoctor().getUserId().equals(userChangeId)) {
+                clinicDoctorRequest.setStatus(requestStatus);
                 isChanged = true;
             }
         }
 
         if (isClinic && isNotSender) {
-            if (request.getClinic().getUserId().equals(userChangeId)) {
-                request.setStatus(requestStatus);
+            if (clinicDoctorRequest.getClinic().getUserId().equals(userChangeId)) {
+                clinicDoctorRequest.setStatus(requestStatus);
                 isChanged = true;
             }
         }

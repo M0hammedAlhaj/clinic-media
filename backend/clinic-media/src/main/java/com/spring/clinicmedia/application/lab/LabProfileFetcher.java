@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.application.user.profile;
+package com.spring.clinicmedia.application.lab;
 
 
 import com.spring.clinicmedia.domain.model.enitity.user.Lab;

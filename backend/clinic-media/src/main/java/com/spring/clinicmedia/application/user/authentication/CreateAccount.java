@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.application.user.registaration;
+package com.spring.clinicmedia.application.user.authentication;
 
 
 import com.spring.clinicmedia.domain.command.UserCreationCommand;

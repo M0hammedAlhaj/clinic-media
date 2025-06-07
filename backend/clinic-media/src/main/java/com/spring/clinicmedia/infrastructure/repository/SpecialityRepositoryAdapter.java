@@ -19,8 +19,13 @@ public class SpecialityRepositoryAdapter implements SpecialityRepository {
     }
 
     @Override
-    public Speciality getById(String id) {
+    public Speciality getByIdOrElseThrow(String id) {
         return specialityJpa.findById(id)
                 .orElseThrow(() -> new ResourcesNotFoundException(Speciality.class, id));
+    }
+
+    @Override
+    public boolean existsById(String id) {
+        return specialityJpa.existsById(id);
     }
 }

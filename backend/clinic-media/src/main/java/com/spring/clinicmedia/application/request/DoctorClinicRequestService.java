@@ -2,7 +2,7 @@ package com.spring.clinicmedia.application.request;
 
 import com.spring.clinicmedia.domain.exception.request.RequestAlreadyExistsException;
 import com.spring.clinicmedia.domain.model.UserType;
-import com.spring.clinicmedia.domain.model.enitity.Request;
+import com.spring.clinicmedia.domain.model.enitity.ClinicDoctorRequest;
 import com.spring.clinicmedia.domain.model.enitity.RequestStatus;
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
 import com.spring.clinicmedia.domain.model.enitity.user.Doctor;
@@ -44,13 +44,13 @@ public class DoctorClinicRequestService {
 
         validator.validateRequestDoesNotExist(clinicId, doctorId, senderType);
 
-        Request request = buildRequest(doctor, clinic, senderType);
+        ClinicDoctorRequest clinicDoctorRequest = buildRequest(doctor, clinic, senderType);
 
-        requestRepository.save(request);
+        requestRepository.save(clinicDoctorRequest);
     }
 
-    private Request buildRequest(Doctor doctor, Clinic clinic, UserType senderType) {
-        return Request.builder()
+    private ClinicDoctorRequest buildRequest(Doctor doctor, Clinic clinic, UserType senderType) {
+        return ClinicDoctorRequest.builder()
                 .clinic(clinic)
                 .doctor(doctor)
                 .sender(senderType)

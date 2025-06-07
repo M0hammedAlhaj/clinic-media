@@ -1,7 +1,7 @@
 package com.spring.clinicmedia.presentation.controller;
 
-import com.spring.clinicmedia.application.ClinicsFetcher;
 import com.spring.clinicmedia.application.DoctorBookingDateFetcher;
+import com.spring.clinicmedia.application.clinic.ClinicsFetcher;
 import com.spring.clinicmedia.domain.model.BookingDateState;
 import com.spring.clinicmedia.domain.model.CustomUserDetail;
 import com.spring.clinicmedia.presentation.dto.ClinicResponse;

@@ -1,11 +1,11 @@
 package com.spring.clinicmedia.presentation.controller;
 
 import com.spring.clinicmedia.application.insurance.InsuranceCreation;
-import com.spring.clinicmedia.application.user.ActivateUser;
-import com.spring.clinicmedia.application.user.profile.ClinicProfileFetcher;
-import com.spring.clinicmedia.application.user.profile.DoctorProfileFetcher;
-import com.spring.clinicmedia.application.user.profile.InactiveAccountFetcher;
-import com.spring.clinicmedia.application.user.profile.LabProfileFetcher;
+import com.spring.clinicmedia.application.user.activation.ActivateUser;
+import com.spring.clinicmedia.application.clinic.ClinicProfileFetcher;
+import com.spring.clinicmedia.application.doctor.DoctorProfileFetcher;
+import com.spring.clinicmedia.application.user.activation.InactiveAccountFetcher;
+import com.spring.clinicmedia.application.lab.LabProfileFetcher;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.infrastructure.mapping.ClinicProfileMapper;
 import com.spring.clinicmedia.presentation.dto.InsuranceRequest;

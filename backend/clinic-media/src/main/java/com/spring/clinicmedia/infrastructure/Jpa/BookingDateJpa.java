@@ -15,14 +15,14 @@ import java.util.Optional;
 public interface BookingDateJpa extends JpaRepository<BookingDate, Long> {
 
     @Query("""
-            
+           \s
                       SELECT CASE WHEN COUNT(b) > 0 THEN true ELSE false END
-                      FROM BOOKING_DATES b 
+                      FROM BOOKING_DATES b\s
                       JOIN b.doctor d
                   WHERE d.userId = :doctorId\s
             AND b.bookingDateStarting < :endDate\s
             AND b.bookingDateEnding > :startDate
-            """)
+           \s""")
     boolean existsOverlappingBookingByDoctorId(
             @Param("doctorId") Long doctorId,
             @Param("startDate") LocalDateTime startDate,

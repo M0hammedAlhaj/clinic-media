@@ -6,7 +6,7 @@ import com.spring.clinicmedia.application.request.RequestFetcher;
 import com.spring.clinicmedia.application.request.RequestStatusChangeHandler;
 import com.spring.clinicmedia.domain.model.CustomUserDetail;
 import com.spring.clinicmedia.domain.model.UserType;
-import com.spring.clinicmedia.domain.model.enitity.Request;
+import com.spring.clinicmedia.domain.model.enitity.ClinicDoctorRequest;
 import com.spring.clinicmedia.presentation.dto.request.RequestChangeStatus;
 import com.spring.clinicmedia.presentation.dto.request.RequestResponse;
 import com.spring.clinicmedia.presentation.map.RequestResponseMapper;
@@ -15,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -42,8 +41,8 @@ public class DoctorController {
     @GetMapping("/requests")
     public ResponseEntity<List<RequestResponse>> getDoctorReceivedRequests(@AuthenticationPrincipal CustomUserDetail user, @RequestParam int pageNumber) {
 
-        List<Request> requests = requestFetcher.execute(user.getUserId(), UserType.DOCTOR, pageNumber);
-        return ResponseEntity.ok(RequestResponseMapper.createFromList(requests));
+        List<ClinicDoctorRequest> clinicDoctorRequests = requestFetcher.execute(user.getUserId(), UserType.DOCTOR, pageNumber);
+        return ResponseEntity.ok(RequestResponseMapper.createFromList(clinicDoctorRequests));
     }
 
     @PutMapping("/requests/{requestId}/status")

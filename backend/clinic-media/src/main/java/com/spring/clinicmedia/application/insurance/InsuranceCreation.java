@@ -16,7 +16,8 @@ public class InsuranceCreation {
     @Transactional
     public String execute(String name) {
 
-        insuranceRepository.findInsuranceByInsuranceNumber(name).ifPresent((i) -> {
+        insuranceRepository.findInsuranceByInsuranceNumber(name)
+                .ifPresent((i) -> {
             throw new ResourceAlreadyExistsException(Insurance.class, name);
         });
 

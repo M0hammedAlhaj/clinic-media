@@ -4,6 +4,8 @@ public interface BaseRepository<T,U> {
 
      T save(T entity);
 
-     T getById(U id);
+     T getByIdOrElseThrow(U id);
+
+     boolean existsById(U id);
 
 }

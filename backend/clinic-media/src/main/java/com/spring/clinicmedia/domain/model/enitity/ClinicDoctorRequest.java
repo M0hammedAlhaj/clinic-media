@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
                 columnNames = {"clinic_id", "doctor_id"}))
 @NoArgsConstructor
 @AllArgsConstructor
-public class Request {
+public class ClinicDoctorRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

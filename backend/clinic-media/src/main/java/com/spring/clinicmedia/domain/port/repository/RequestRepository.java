@@ -1,17 +1,17 @@
 package com.spring.clinicmedia.domain.port.repository;
 
 import com.spring.clinicmedia.domain.model.UserType;
-import com.spring.clinicmedia.domain.model.enitity.Request;
-import org.springframework.data.domain.Page;
+import com.spring.clinicmedia.domain.model.enitity.ClinicDoctorRequest;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
-public interface RequestRepository extends BaseRepository<Request, Long> {
+public interface RequestRepository extends BaseRepository<ClinicDoctorRequest, Long> {
 
-    Optional<Request> findByClinicIdAndDoctorIdAndSender(long clinicId, long doctorId, UserType sender);
+    Optional<ClinicDoctorRequest> findByClinicIdAndDoctorIdAndSender(long clinicId, long doctorId, UserType sender);
 
-    Page<Request> findRequestsBySenderIdAndSenderType(long senderId, UserType sender, Pageable pageable);
+    List<ClinicDoctorRequest> findRequestsBySenderIdAndSenderType(long senderId, UserType sender, Pageable pageable);
 
-    Optional<Request> findByClinicIdAndDoctorID(long clinicId, long doctorId);
+    Optional<ClinicDoctorRequest> findByClinicIdAndDoctorID(long clinicId, long doctorId);
 }

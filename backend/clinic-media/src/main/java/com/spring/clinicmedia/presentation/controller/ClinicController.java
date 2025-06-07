@@ -2,7 +2,7 @@ package com.spring.clinicmedia.presentation.controller;
 
 
 import com.spring.clinicmedia.application.BookingDateCreation;
-import com.spring.clinicmedia.application.ClinicAddSpeciality;
+import com.spring.clinicmedia.application.clinic.ClinicAddSpeciality;
 import com.spring.clinicmedia.application.insurance.UserAddInsurance;
 import com.spring.clinicmedia.application.request.DoctorClinicRequestService;
 import com.spring.clinicmedia.application.request.RequestFetcher;
@@ -10,7 +10,7 @@ import com.spring.clinicmedia.application.request.RequestStatusChangeHandler;
 import com.spring.clinicmedia.domain.model.CustomUserDetail;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.BookingDate;
-import com.spring.clinicmedia.domain.model.enitity.Request;
+import com.spring.clinicmedia.domain.model.enitity.ClinicDoctorRequest;
 import com.spring.clinicmedia.presentation.dto.ClinicResponse;
 import com.spring.clinicmedia.presentation.dto.bookingDate.BookingDateCreationRequest;
 import com.spring.clinicmedia.presentation.dto.bookingDate.BookingDateCreationResponse;
@@ -56,9 +56,9 @@ public class ClinicController {
     public ResponseEntity<List<RequestResponse>> getClinicReceivedRequest(@AuthenticationPrincipal CustomUserDetail user
             , @RequestParam int pageNumber) {
 
-        List<Request> requests =
+        List<ClinicDoctorRequest> clinicDoctorRequests =
                 requestFetcher.execute(user.getUserId(), UserType.CLINIC, pageNumber);
-        return ResponseEntity.ok(RequestResponseMapper.createFromList(requests));
+        return ResponseEntity.ok(RequestResponseMapper.createFromList(clinicDoctorRequests));
     }
 
     @PutMapping("/bookingDates/{doctorId}")

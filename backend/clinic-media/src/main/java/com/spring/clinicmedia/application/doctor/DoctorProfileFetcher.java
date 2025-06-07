@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.application.user.profile;
+package com.spring.clinicmedia.application.doctor;
 
 import com.spring.clinicmedia.domain.model.enitity.user.Doctor;
 import com.spring.clinicmedia.domain.port.repository.DoctorRepository;

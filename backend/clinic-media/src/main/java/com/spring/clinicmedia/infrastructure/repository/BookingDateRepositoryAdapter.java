@@ -26,9 +26,14 @@ public class BookingDateRepositoryAdapter implements BookingDateRepository {
     }
 
     @Override
-    public BookingDate getById(Long id) {
+    public BookingDate getByIdOrElseThrow(Long id) {
         return bookingDateJpa.findById(id)
                 .orElseThrow(() -> new ResourcesNotFoundException("Booking date not found"));
+    }
+
+    @Override
+    public boolean existsById(Long id) {
+        return bookingDateJpa.existsById(id);
     }
 
     @Override
@@ -55,4 +60,5 @@ public class BookingDateRepositoryAdapter implements BookingDateRepository {
                 .collect(Collectors.groupingBy(BookingDate::getDoctor));
 
     }
+
 }

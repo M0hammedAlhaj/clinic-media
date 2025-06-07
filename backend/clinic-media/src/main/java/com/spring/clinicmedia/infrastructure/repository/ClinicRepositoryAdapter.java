@@ -50,7 +50,7 @@ public class ClinicRepositoryAdapter implements ClinicRepository {
 
     @Override
     public boolean existsByUserId(Long id) {
-        return existsByUserId(id);
+        return clinicJpaRepository.existsById(id);
     }
 
     @Override

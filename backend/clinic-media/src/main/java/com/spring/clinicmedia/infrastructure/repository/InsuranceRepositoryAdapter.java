@@ -22,9 +22,14 @@ public class InsuranceRepositoryAdapter implements InsuranceRepository {
     }
 
     @Override
-    public Insurance getById(String id) {
+    public Insurance getByIdOrElseThrow(String id) {
         return insuranceJpa.findById(id)
                 .orElseThrow(() -> new ResourcesNotFoundException(id));
+    }
+
+    @Override
+    public boolean existsById(String id) {
+        return insuranceJpa.existsById(id);
     }
 
     @Override
