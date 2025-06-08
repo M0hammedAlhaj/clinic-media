@@ -13,14 +13,13 @@ public class ResourcesNotFoundException extends RuntimeException {
     }
 
 
-    
-    public ResourcesNotFoundException(Class userType, long id) {
-        super(String.format("%s not found by Id : %d", userType, id));
+    public ResourcesNotFoundException(Class<?> aClass, long id) {
+        super(String.format("%s not found by Id : %d", aClass, id));
 
     }
 
-    public ResourcesNotFoundException(Class userType, String id) {
-        super(String.format("%s not found by Id : %d", userType, id));
+    public ResourcesNotFoundException(Class<?> aClass, String id) {
+        super(String.format("%s not found by Id : %s", aClass, id));
 
     }
 }

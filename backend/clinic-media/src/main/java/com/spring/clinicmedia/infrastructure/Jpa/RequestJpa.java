@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface RequestJpaRepository extends JpaRepository<ClinicDoctorRequest, Long> {
+public interface RequestJpa extends JpaRepository<ClinicDoctorRequest, Long> {
 
 
     Optional<ClinicDoctorRequest> findByClinicUserIdAndDoctorUserIdAndSender(Long clinic_userId,

@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 @EnableJpaRepositories(basePackageClasses = Lab.class)
-public interface LabJpaRepository extends JpaRepository<Lab, Long> {
+public interface LabJpa extends JpaRepository<Lab, Long> {
 
 
     Optional<Lab> findLabByRegistrationEmail(String email);

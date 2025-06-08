@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Repository
 @EnableJpaRepositories
-public interface ClinicJpaRepository extends JpaRepository<Clinic, Long>, JpaSpecificationExecutor<Clinic> {
+public interface ClinicJpa extends JpaRepository<Clinic, Long>, JpaSpecificationExecutor<Clinic> {
 
 
     Optional<Clinic> findClinicByRegistrationEmail(String email);

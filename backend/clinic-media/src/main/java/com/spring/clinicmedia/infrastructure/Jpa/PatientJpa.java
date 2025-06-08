@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 @EnableJpaRepositories
-public interface PatientJpaRepository extends JpaRepository<Patient, Long> {
+public interface PatientJpa extends JpaRepository<Patient, Long> {
 
     Optional<Patient> findByRegistrationEmail(String email);
 

@@ -17,6 +17,8 @@ public class UserActivationValidatorAdapter implements UserActivationValidator {
     public UserActivationValidatorAdapter(UserRepositoryDispatcher userRepositoryDispatcher) {
         this.userRepositoryDispatcher = userRepositoryDispatcher;
 
+
+
     }
 
     @Override
@@ -24,6 +26,7 @@ public class UserActivationValidatorAdapter implements UserActivationValidator {
 
         UserRepository<User> userRepository =
                 userRepositoryDispatcher.getRepository(userType);
+
         User user = userRepository.getUserByIdOrElseThrow(userId);
 
         if (!user.isActive()) {

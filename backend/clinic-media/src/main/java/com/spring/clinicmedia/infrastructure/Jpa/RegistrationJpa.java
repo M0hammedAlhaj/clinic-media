@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @EnableJpaRepositories
 @Repository
-public interface RegistrationJpaRepository extends JpaRepository<Registration, Long> {
+public interface RegistrationJpa extends JpaRepository<Registration, Long> {
 
         Optional<Registration> findByEmail(String email);
 }

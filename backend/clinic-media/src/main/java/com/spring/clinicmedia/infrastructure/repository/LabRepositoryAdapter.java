@@ -4,7 +4,7 @@ import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.user.Lab;
 import com.spring.clinicmedia.domain.port.repository.LabRepository;
-import com.spring.clinicmedia.infrastructure.Jpa.LabJpaRepository;
+import com.spring.clinicmedia.infrastructure.Jpa.LabJpa;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,38 +16,38 @@ import java.util.Optional;
 @AllArgsConstructor
 public class LabRepositoryAdapter implements LabRepository {
 
-    private final LabJpaRepository labJpaRepository;
+    private final LabJpa labJpa;
 
 
     @Override
     public Optional<Lab> findUserByEmail(String email) {
-        return labJpaRepository.findLabByRegistrationEmail(email);
+        return labJpa.findLabByRegistrationEmail(email);
     }
 
     @Override
     public Lab saveUser(Lab user) {
-        return labJpaRepository.save(user);
+        return labJpa.save(user);
     }
 
     public Page<Lab> getUserByActive(boolean active, Pageable pageable) {
-        return labJpaRepository.findByIsActive(active, pageable);
+        return labJpa.findByIsActive(active, pageable);
     }
 
     @Override
     public Lab getUserByIdOrElseThrow(Long id) {
-        return labJpaRepository.findById(id)
+        return labJpa.findById(id)
                 .orElseThrow(() -> new ResourcesNotFoundException(UserType.LAB, id));
 
     }
 
     @Override
     public Lab getUserByUserEmailOrElseThrow(String userEmail) {
-        return labJpaRepository.findLabByRegistrationEmail(userEmail).orElseThrow(() -> new ResourcesNotFoundException(Lab.class, userEmail));
+        return labJpa.findLabByRegistrationEmail(userEmail).orElseThrow(() -> new ResourcesNotFoundException(Lab.class, userEmail));
     }
 
     @Override
     public boolean existsByUserId(Long id) {
-        return labJpaRepository.existsById(id);
+        return labJpa.existsById(id);
     }
 
 }

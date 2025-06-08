@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 @EnableJpaRepositories
-public interface AdminJpaRepository extends JpaRepository<Admin,Long > {
+public interface AdminJpa extends JpaRepository<Admin,Long > {
 
 
     Optional<Admin> findByRegistrationEmail(String email);

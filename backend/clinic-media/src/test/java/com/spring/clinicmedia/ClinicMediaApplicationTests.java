@@ -8,6 +8,7 @@ class ClinicMediaApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }

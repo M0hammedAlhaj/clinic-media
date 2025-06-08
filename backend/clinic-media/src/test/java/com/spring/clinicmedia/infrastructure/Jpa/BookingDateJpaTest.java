@@ -18,7 +18,7 @@ class BookingDateJpaTest {
     private BookingDateJpa underTest;
 
     @Autowired
-    private DoctorJpaRepository doctorJpaRepository;
+    private DoctorJpa doctorJpa;
 
     @Test
     void bookingCompletelyBefore_shouldNotOverlap() {
@@ -118,7 +118,7 @@ class BookingDateJpaTest {
                 .build();
         Doctor doctor = new Doctor();
         doctor.setRegistration(registration);
-        return doctorJpaRepository.save(doctor);
+        return doctorJpa.save(doctor);
     }
 
     private BookingDate saveBooking(Doctor doctor, LocalDateTime start, LocalDateTime end) {
