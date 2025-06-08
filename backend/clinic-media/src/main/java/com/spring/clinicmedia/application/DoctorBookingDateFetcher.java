@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -25,13 +26,15 @@ public class DoctorBookingDateFetcher {
     private final ClinicRepository clinicRepository;
 
     public Map<Doctor, List<BookingDate>> execute(Long clinicId,
-            BookingDateState bookingDateState) {
-
+                                                  BookingDateState bookingDateState) {
 
         if (!clinicRepository.existsByUserId(clinicId)) {
             throw new ResourcesNotFoundException(Clinic.class, clinicId);
         }
 
-        return bookingDateRepository.findByClinicAndStatus(clinicId, bookingDateState);
+
+        return bookingDateRepository.findByClinicAndStatus(clinicId, bookingDateState)
+                .stream()
+                .collect(Collectors.groupingBy(BookingDate::getDoctor));
     }
 }
