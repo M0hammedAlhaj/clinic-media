@@ -38,7 +38,7 @@ public class DoctorClinicRequestService {
 
         userActivationValidator.validate(clinicId, UserType.CLINIC);
 
-        if (doctorRepository.existsDoctorInClinic(doctorId, clinicId)) {
+        if (doctorRepository.isDoctorAssociatedWithClinic(doctorId, clinicId)) {
             throw new RequestAlreadyExistsException("Request Already Exists");
         }
 

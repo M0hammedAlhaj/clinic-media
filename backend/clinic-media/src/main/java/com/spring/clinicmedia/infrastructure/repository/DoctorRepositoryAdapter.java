@@ -50,8 +50,8 @@ public class DoctorRepositoryAdapter implements DoctorRepository {
     }
 
     @Override
-    public boolean existsDoctorInClinic(long doctorId,long clinicId) {
-        return doctorJpa.existsDoctorByClinicId(doctorId,clinicId);
+    public boolean isDoctorAssociatedWithClinic(long doctorId,long clinicId) {
+        return doctorJpa.isDoctorAssociatedWithClinic(doctorId,clinicId);
     }
 
 }

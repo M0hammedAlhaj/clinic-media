@@ -21,11 +21,10 @@ public interface DoctorJpa extends JpaRepository<Doctor, Long> {
     Page<Doctor> findByIsActive(boolean active, Pageable pageable);
 
 
-
-    @Query("SELECT CASE WHEN COUNT(c) > 0 THEN true ELSE false END " +
-            "FROM Clinic c JOIN c.doctors d " +
-            "WHERE c.userId = :clinicId AND d.userId = :doctorId")
-    boolean existsDoctorByClinicId(@Param("doctorId") long doctorId,
-                                   @Param("clinicId") long clinicId);
+@Query("SELECT CASE WHEN EXISTS (" +
+            "SELECT 1 FROM Clinic c JOIN c.doctors d " +
+            "WHERE c.userId = :clinicId AND d.userId = :doctorId) THEN true ELSE false END")
+    boolean isDoctorAssociatedWithClinic(@Param("doctorId") long doctorId,
+                                         @Param("clinicId") long clinicId);
 
 }

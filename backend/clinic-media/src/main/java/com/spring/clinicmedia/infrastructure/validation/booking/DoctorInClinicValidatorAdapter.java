@@ -14,7 +14,7 @@ public class DoctorInClinicValidatorAdapter implements DoctorInClinicValidator {
 
     @Override
     public void check(Long doctorId, Long clinicId) {
-        if (!doctorRepository.existsDoctorInClinic(doctorId, clinicId)) {
+        if (!doctorRepository.isDoctorAssociatedWithClinic(doctorId, clinicId)) {
             throw new DoctorNotInClinicException(doctorId, clinicId);
         }
     }
