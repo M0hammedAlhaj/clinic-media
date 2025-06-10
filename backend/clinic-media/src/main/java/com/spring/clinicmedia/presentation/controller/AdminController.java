@@ -1,13 +1,14 @@
 package com.spring.clinicmedia.presentation.controller;
 
-import com.spring.clinicmedia.application.insurance.InsuranceCreation;
-import com.spring.clinicmedia.application.user.activation.ActivateUser;
 import com.spring.clinicmedia.application.clinic.ClinicProfileFetcher;
 import com.spring.clinicmedia.application.doctor.DoctorProfileFetcher;
-import com.spring.clinicmedia.application.user.activation.InactiveAccountFetcher;
+import com.spring.clinicmedia.application.insurance.InsuranceCreation;
 import com.spring.clinicmedia.application.lab.LabProfileFetcher;
+import com.spring.clinicmedia.application.user.activation.ActivateUser;
+import com.spring.clinicmedia.application.user.activation.InactiveAccountFetcher;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.infrastructure.mapping.ClinicProfileMapper;
+import com.spring.clinicmedia.infrastructure.mapping.DoctorProfileMapper;
 import com.spring.clinicmedia.presentation.dto.InsuranceRequest;
 import com.spring.clinicmedia.presentation.dto.admin.InactiveAccountResponse;
 import com.spring.clinicmedia.presentation.dto.profile.ClinicProfile;
@@ -51,7 +52,8 @@ public class AdminController {
 
     @GetMapping("/doctor-profile/{doctorId}")
     public ResponseEntity<DoctorProfile> fitchDoctorProfile(@PathVariable int doctorId) {
-        return ResponseEntity.ok(doctorProfileFetcher.execute(doctorId));
+
+        return ResponseEntity.ok(DoctorProfileMapper.createFrom(doctorProfileFetcher.execute(doctorId)));
     }
 
     @GetMapping("/lab-profile/{labId}")

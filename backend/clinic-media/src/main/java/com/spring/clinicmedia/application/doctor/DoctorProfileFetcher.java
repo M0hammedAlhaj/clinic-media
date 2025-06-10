@@ -1,27 +1,28 @@
 package com.spring.clinicmedia.application.doctor;
 
+import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.enitity.user.Doctor;
 import com.spring.clinicmedia.domain.port.repository.DoctorRepository;
-import com.spring.clinicmedia.presentation.dto.profile.DoctorProfile;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service responsible for fetching the profile of a doctor by user ID.
+ */
 @Service
 @AllArgsConstructor
 public class DoctorProfileFetcher {
 
     private final DoctorRepository doctorUserRepository;
 
-    public DoctorProfile execute(long userId) {
-
-
-        Doctor doctor = doctorUserRepository.getUserByIdOrElseThrow(userId);
-
-        return DoctorProfile.builder()
-                .userName(doctor.getRegistration().getName())
-                .email(doctor.getRegistration().getEmail())
-                .build();
+    /**
+     * Retrieves the doctor profile for the given user ID.
+     *
+     * @param userId the ID of the doctor user
+     * @return the Doctor entity associated with the given user ID
+     * @throws ResourcesNotFoundException if no doctor with the given user ID exists
+     */
+    public Doctor execute(long userId) {
+        return doctorUserRepository.getUserByIdOrElseThrow(userId);
     }
-
-
 }

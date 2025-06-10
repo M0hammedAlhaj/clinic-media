@@ -16,9 +16,6 @@ public class UserActivationValidatorAdapter implements UserActivationValidator {
 
     public UserActivationValidatorAdapter(UserRepositoryDispatcher userRepositoryDispatcher) {
         this.userRepositoryDispatcher = userRepositoryDispatcher;
-
-
-
     }
 
     @Override

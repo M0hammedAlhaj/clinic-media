@@ -2,7 +2,7 @@ package com.spring.clinicmedia.presentation.controller;
 
 
 import com.spring.clinicmedia.application.BookingDateCreation;
-import com.spring.clinicmedia.application.clinic.ClinicAddSpeciality;
+import com.spring.clinicmedia.application.clinic.ClinicSpecialityAssignmentService;
 import com.spring.clinicmedia.application.insurance.UserAddInsurance;
 import com.spring.clinicmedia.application.request.DoctorClinicRequestService;
 import com.spring.clinicmedia.application.request.RequestFetcher;
@@ -41,7 +41,7 @@ public class ClinicController {
 
     private final UserAddInsurance addInsurance;
 
-    private final ClinicAddSpeciality clinicAddSpeciality;
+    private final ClinicSpecialityAssignmentService clinicSpecialityAssignmentService;
 
     @PutMapping("/doctor/{doctorId}")
     public ResponseEntity<String> doctorsAddClinic(@PathVariable int doctorId,
@@ -102,7 +102,7 @@ public class ClinicController {
             @PathVariable String specialityName) {
 
         return ResponseEntity.ok(
-                ClinicResponseMapper.createFrom(clinicAddSpeciality.addSpeciality(specialityName, clinic.getUserId())));
+                ClinicResponseMapper.createFrom(clinicSpecialityAssignmentService.addSpeciality(specialityName, clinic.getUserId())));
 
     }
 }
