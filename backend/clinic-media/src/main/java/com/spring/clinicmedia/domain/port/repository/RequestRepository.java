@@ -11,7 +11,7 @@ public interface RequestRepository extends BaseRepository<ClinicDoctorRequest, L
 
     Optional<ClinicDoctorRequest> findByClinicIdAndDoctorIdAndSender(long clinicId, long doctorId, UserType sender);
 
-    List<ClinicDoctorRequest> findRequestsBySenderIdAndSenderType(long senderId, UserType sender, Pageable pageable);
+    List<ClinicDoctorRequest> getRequestsBySenderIdAndSenderType(long senderId, UserType sender, Pageable pageable);
 
     Optional<ClinicDoctorRequest> findByClinicIdAndDoctorID(long clinicId, long doctorId);
 }

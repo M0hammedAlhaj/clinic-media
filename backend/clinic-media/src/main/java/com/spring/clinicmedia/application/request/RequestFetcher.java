@@ -23,7 +23,7 @@ public class RequestFetcher {
 
         userActivationValidator.validate(userId, sender);
 
-        return requestRepository.findRequestsBySenderIdAndSenderType(userId,
+        return requestRepository.getRequestsBySenderIdAndSenderType(userId,
                 sender, PageRequest.of(pageNumber, 5));
     }
 

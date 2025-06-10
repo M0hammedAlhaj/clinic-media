@@ -41,11 +41,12 @@ public class RequestRepositoryAdapter implements RequestRepository {
     }
 
     @Override
-    public List<ClinicDoctorRequest> findRequestsBySenderIdAndSenderType(long senderId,
-                                                                         UserType sender,
-                                                                         Pageable pageable) {
+    public List<ClinicDoctorRequest> getRequestsBySenderIdAndSenderType(long senderId,
+                                                                        UserType sender,
+                                                                        Pageable pageable) {
         if (sender.equals(UserType.CLINIC))
-            return requestJpa.findRequestsByClinicUserIdAndSender(senderId, sender, pageable).getContent();
+            return requestJpa.findRequestsByClinicUserIdAndSender(senderId, sender, pageable)
+                    .getContent();
 
         return requestJpa.findRequestsByDoctorUserIdAndSender(senderId, sender, pageable).getContent();
     }
