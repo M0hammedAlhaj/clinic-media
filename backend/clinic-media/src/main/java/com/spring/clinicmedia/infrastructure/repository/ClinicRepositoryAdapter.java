@@ -66,7 +66,7 @@ public class ClinicRepositoryAdapter implements ClinicRepository {
 
 
     @Override
-    public Optional<Clinic> findClinicByIdAndSpecialityName(String specialityName, Long clinicId) {
+    public Optional<Clinic> findClinicByIdAndSpecialityName(Long clinicId, String specialityName ) {
         return clinicJpa.searchBySpecialitiesSpecialityNameAndUserId(specialityName, clinicId);
     }
 

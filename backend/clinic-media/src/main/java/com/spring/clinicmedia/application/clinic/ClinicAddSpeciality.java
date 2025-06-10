@@ -24,7 +24,7 @@ public class ClinicAddSpeciality {
 
         Speciality speciality = specialityRepository.getByIdOrElseThrow(specialityName);
 
-        clinicRepository.findClinicByIdAndSpecialityName(specialityName, clinicId)
+        clinicRepository.findClinicByIdAndSpecialityName(clinicId, specialityName)
                 .ifPresent(clinic -> {
                     throw new ResourceAlreadyExistsException(Clinic.class,
                             specialityName);
