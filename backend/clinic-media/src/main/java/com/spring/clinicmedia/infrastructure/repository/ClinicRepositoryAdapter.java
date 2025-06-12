@@ -70,5 +70,10 @@ public class ClinicRepositoryAdapter implements ClinicRepository {
         return clinicJpa.searchBySpecialitiesSpecialityNameAndUserId(specialityName, clinicId);
     }
 
+    @Override
+    public boolean isClinicHasInsurance(Long clinicId, String insuranceName) {
+        return clinicJpa.existsClinicByUserIdAndInsurancesInsuranceName(clinicId,insuranceName);
+    }
+
 }
 

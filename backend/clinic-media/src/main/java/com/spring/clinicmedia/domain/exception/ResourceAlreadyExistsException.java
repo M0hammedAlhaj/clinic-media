@@ -9,4 +9,7 @@ public class ResourceAlreadyExistsException extends RuntimeException {
     public ResourceAlreadyExistsException(String resourceName, String identifier) {
         super(String.format("%s already exists with ID: %s", resourceName, identifier));
     }
+
+    public ResourceAlreadyExistsException(String s) {
+    }
 }

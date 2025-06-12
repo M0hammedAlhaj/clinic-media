@@ -37,7 +37,7 @@ public class Clinic extends User {
     private List<Speciality> specialities;
 
 
-    @ManyToMany
+    @ManyToMany()
     @JoinTable(name = "CLINCES_INSURANCES",
             joinColumns = @JoinColumn(name = "insurance_name"),
             inverseJoinColumns = @JoinColumn(name = "clinic_id"))

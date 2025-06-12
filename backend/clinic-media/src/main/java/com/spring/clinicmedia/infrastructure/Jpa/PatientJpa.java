@@ -17,4 +17,6 @@ public interface PatientJpa extends JpaRepository<Patient, Long> {
 
 
     Page<Patient> findByIsActive(boolean active, Pageable pageable);
+
+    boolean existsPatientByUserIdAndInsurancesInsuranceName(Long patientId, String insuranceName);
 }

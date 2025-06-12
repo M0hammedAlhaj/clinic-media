@@ -50,4 +50,9 @@ public class PatientRepositoryAdapter implements PatientRepository {
         return patientJpa.existsById(id);
     }
 
+    @Override
+    public boolean isPatientHasInsurance(Long patientId, String insuranceName) {
+        return patientJpa.existsPatientByUserIdAndInsurancesInsuranceName(patientId, insuranceName);
+    }
+
 }

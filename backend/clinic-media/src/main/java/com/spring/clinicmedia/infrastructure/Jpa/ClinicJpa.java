@@ -21,4 +21,6 @@ public interface ClinicJpa extends JpaRepository<Clinic, Long>, JpaSpecification
 
 
     Optional<Clinic> searchBySpecialitiesSpecialityNameAndUserId(String specialityName, Long clinicId);
+
+    boolean existsClinicByUserIdAndInsurancesInsuranceName(Long clinicId, String insuranceName);
 }

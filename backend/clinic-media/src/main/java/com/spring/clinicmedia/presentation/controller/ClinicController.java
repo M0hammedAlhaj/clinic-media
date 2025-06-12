@@ -3,7 +3,7 @@ package com.spring.clinicmedia.presentation.controller;
 
 import com.spring.clinicmedia.application.BookingDateCreation;
 import com.spring.clinicmedia.application.clinic.ClinicSpecialityAssignmentService;
-import com.spring.clinicmedia.application.insurance.UserAddInsurance;
+import com.spring.clinicmedia.application.insurance.users.ClinicAddInsurance;
 import com.spring.clinicmedia.application.request.DoctorClinicRequestService;
 import com.spring.clinicmedia.application.request.RequestFetcher;
 import com.spring.clinicmedia.application.request.RequestStatusChangeHandler;
@@ -39,7 +39,7 @@ public class ClinicController {
 
     private final RequestStatusChangeHandler requestStatusChangeHandler;
 
-    private final UserAddInsurance addInsurance;
+    private final ClinicAddInsurance clinicAddInsurance;
 
     private final ClinicSpecialityAssignmentService clinicSpecialityAssignmentService;
 
@@ -91,7 +91,7 @@ public class ClinicController {
             (@AuthenticationPrincipal CustomUserDetail clinic,
              @PathVariable String insuranceName) {
 
-        addInsurance.execute(UserType.CLINIC, insuranceName, clinic.getUserId());
+        clinicAddInsurance.addInsurance(insuranceName, clinic.getUserId());
 
         return ResponseEntity.ok("Add Insurance");
     }

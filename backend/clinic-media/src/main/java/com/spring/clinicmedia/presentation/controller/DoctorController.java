@@ -1,6 +1,6 @@
 package com.spring.clinicmedia.presentation.controller;
 
-import com.spring.clinicmedia.application.insurance.UserAddInsurance;
+import com.spring.clinicmedia.application.insurance.users.PatientAddInsurance;
 import com.spring.clinicmedia.application.request.DoctorClinicRequestService;
 import com.spring.clinicmedia.application.request.RequestFetcher;
 import com.spring.clinicmedia.application.request.RequestStatusChangeHandler;
@@ -28,7 +28,7 @@ public class DoctorController {
 
     private final RequestStatusChangeHandler requestStatusChangeHandler;
 
-    private final UserAddInsurance userAddInsurance;
+    private final PatientAddInsurance patientAddInsurance;
 
     @PutMapping("/clinic/{clinicId}")
     public ResponseEntity<String> doctorsAddClinic(@PathVariable int clinicId, @AuthenticationPrincipal CustomUserDetail user) {
@@ -60,10 +60,10 @@ public class DoctorController {
     @PutMapping("/insurance/{insuranceName}")
     public ResponseEntity<String> doctorAddInsurance(@PathVariable String insuranceName, @AuthenticationPrincipal CustomUserDetail user) {
 
-        userAddInsurance.execute(UserType.DOCTOR, insuranceName, user.getUserId());
+        patientAddInsurance.addInsurance(insuranceName, user.getUserId());
 
         return ResponseEntity.ok("Doctor added");
     }
 
-    
+
 }

@@ -19,8 +19,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @AttributeOverride(
-        name="userId",
-        column=@Column(name="patient_id")
+        name = "userId",
+        column = @Column(name = "patient_id")
 )
 public class Patient extends User {
 
@@ -42,7 +42,6 @@ public class Patient extends User {
     @OneToOne
     @JoinColumn(name = "patient_question_id")
     private PatientQuestion patientQuestion;
-
 
 
 }

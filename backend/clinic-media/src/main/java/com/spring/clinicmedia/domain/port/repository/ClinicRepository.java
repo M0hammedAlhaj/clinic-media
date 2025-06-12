@@ -11,5 +11,7 @@ public interface ClinicRepository extends UserRepository<Clinic> {
 
     List<Clinic> getClinicsByFilter(Pageable pageable, Specification<Clinic> specification);
 
-     Optional<Clinic> findClinicByIdAndSpecialityName(Long clinicId, String specialityName);
+    Optional<Clinic> findClinicByIdAndSpecialityName(Long clinicId, String specialityName);
+
+    boolean isClinicHasInsurance(Long clinicId, String insuranceName);
 }
