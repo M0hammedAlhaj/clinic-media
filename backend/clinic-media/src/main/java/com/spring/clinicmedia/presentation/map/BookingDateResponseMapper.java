@@ -7,7 +7,7 @@ public class BookingDateResponseMapper {
 
     public static BookingDateResponse createFrom(BookingDate bookingDate) {
         return BookingDateResponse.builder()
-                .id(bookingDate.ge)
+                .id(bookingDate.getBookingDateId())
                 .startTime(bookingDate.getBookingDateStarting())
                 .endTime(bookingDate.getBookingDateEnding())
                 .build();
