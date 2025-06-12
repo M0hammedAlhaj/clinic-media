@@ -14,16 +14,19 @@ public class InsuranceCreation {
     private final InsuranceRepository insuranceRepository;
 
     @Transactional
-    public String execute(String name) {
+    public Insurance execute(String name) {
 
         insuranceRepository.findInsuranceByInsuranceNumber(name)
                 .ifPresent((i) -> {
-            throw new ResourceAlreadyExistsException(Insurance.class, name);
-        });
+                    throw new ResourceAlreadyExistsException(Insurance.class, name);
+                });
 
-        return insuranceRepository.save(Insurance.builder()
-                        .insuranceName(name)
-                        .build())
-                .getInsuranceName();
+        return insuranceRepository.save(buildInsurance(name));
+    }
+
+    private Insurance buildInsurance(String name) {
+        return Insurance.builder()
+                .insuranceName(name)
+                .build();
     }
 }

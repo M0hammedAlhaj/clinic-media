@@ -70,10 +70,12 @@ public class AdminController {
 
     @PostMapping("/insurances")
     public ResponseEntity<String> createInsurance(@RequestBody InsuranceRequest insurance) {
+        String insuranceName =
+                insuranceCreation.execute(insurance.getInsurance()).getInsuranceName();
 
-        URI insuranceName = URI.create(insuranceCreation.execute(insurance.getInsurance()));
+        URI uriInsurance = URI.create(insuranceName);
 
-        return ResponseEntity.created(insuranceName).
+        return ResponseEntity.created(uriInsurance).
                 body("Insurance created with ID: " + insurance.getInsurance());
     }
 

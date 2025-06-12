@@ -1,15 +1,12 @@
 package com.spring.clinicmedia.application.doctor;
 
-import com.spring.clinicmedia.application.doctor.DoctorProfileFetcher;
-import com.spring.clinicmedia.domain.model.enitity.user.Doctor;
 import com.spring.clinicmedia.domain.port.repository.DoctorRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 class DoctorProfileFetcherTest {
 

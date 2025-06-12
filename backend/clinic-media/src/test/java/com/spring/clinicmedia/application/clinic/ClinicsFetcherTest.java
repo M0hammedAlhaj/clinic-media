@@ -3,10 +3,11 @@ package com.spring.clinicmedia.application.clinic;
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
 import com.spring.clinicmedia.domain.port.repository.ClinicRepository;
 import com.spring.clinicmedia.presentation.dto.FilterSpecification;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
@@ -15,18 +16,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 class ClinicFetcherTest {
 
     @Mock
     private ClinicRepository clinicRepository;
 
+    @InjectMocks
     private ClinicsFetcher underTest;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-        underTest = new ClinicsFetcher(clinicRepository);
-    }
 
     @Test
     void getClinics_shouldReturnListFromRepository() {
