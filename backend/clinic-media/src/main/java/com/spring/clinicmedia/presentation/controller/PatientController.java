@@ -54,7 +54,8 @@ public class PatientController {
 
         return ResponseEntity
                 .ok(PatientClinicViewMapper
-                        .createFrom(doctorBookingDateFetcher.execute(clinicId, BookingDateState.AWAITING_CONFIRMATION)));
+                        .createFrom(doctorBookingDateFetcher.execute(clinicId,
+                                BookingDateState.AWAITING_CONFIRMATION)));
     }
 
 

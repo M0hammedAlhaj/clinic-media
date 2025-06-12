@@ -11,7 +11,8 @@ public class BookAppointmentResponseMapper {
                 .bookingDateId(bookingDate.getBookingDateId())
                 .clinicId(bookingDate.getClinic().getUserId())
                 .doctorId(bookingDate.getDoctor().getUserId())
-                .cityLocation(bookingDate.getLocation().getCountryName())
+                .cityLocation(bookingDate.getLocation()
+                        .getCountryName())
                 .build();
     }
 }
