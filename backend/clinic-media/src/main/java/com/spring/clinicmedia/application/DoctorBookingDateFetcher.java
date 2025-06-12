@@ -37,4 +37,5 @@ public class DoctorBookingDateFetcher {
                 .stream()
                 .collect(Collectors.groupingBy(BookingDate::getDoctor));
     }
+
 }

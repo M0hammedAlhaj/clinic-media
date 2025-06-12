@@ -101,14 +101,14 @@
 
             when(bookingDateJpaMock
                     .findBookingDatesByDoctorUserIdAndClinicUserIdAndBookingDateStatus
-                            (1L, 1L, BookingDateState.WAITING))
+                            (1L, 1L, BookingDateState.AWAITING_CONFIRMATION))
                     .thenReturn(Optional.of(List.of(new BookingDate())));
 
-            assertThat(underTest.getByDoctorClinicAndStatusOrElseThrow(1L, 1L, BookingDateState.WAITING))
+            assertThat(underTest.getByDoctorClinicAndStatusOrElseThrow(1L, 1L, BookingDateState.AWAITING_CONFIRMATION))
                     .isNotNull();
 
             verify(bookingDateJpaMock).findBookingDatesByDoctorUserIdAndClinicUserIdAndBookingDateStatus
-                    (1L, 1L, BookingDateState.WAITING);
+                    (1L, 1L, BookingDateState.AWAITING_CONFIRMATION);
 
         }
 
@@ -117,14 +117,14 @@
 
             when(bookingDateJpaMock
                     .findBookingDatesByDoctorUserIdAndClinicUserIdAndBookingDateStatus
-                            (1L, 1L, BookingDateState.WAITING))
+                            (1L, 1L, BookingDateState.AWAITING_CONFIRMATION))
                     .thenReturn(Optional.empty());
 
-            assertThatThrownBy(() -> underTest.getByDoctorClinicAndStatusOrElseThrow(1L, 1L, BookingDateState.WAITING))
+            assertThatThrownBy(() -> underTest.getByDoctorClinicAndStatusOrElseThrow(1L, 1L, BookingDateState.AWAITING_CONFIRMATION))
                     .isInstanceOf(ResourcesNotFoundException.class);
 
             verify(bookingDateJpaMock).findBookingDatesByDoctorUserIdAndClinicUserIdAndBookingDateStatus
-                    (1L, 1L, BookingDateState.WAITING);
+                    (1L, 1L, BookingDateState.AWAITING_CONFIRMATION);
 
         }
 
@@ -132,13 +132,13 @@
         void findByClinicAndStatus_shouldReturnBookingDate() {
 
             when(bookingDateJpaMock
-                    .findBookingDateByClinicUserIdAndBookingDateStatus(1L, BookingDateState.WAITING))
+                    .findBookingDateByClinicUserIdAndBookingDateStatus(1L, BookingDateState.AWAITING_CONFIRMATION))
                     .thenReturn(Optional.of(List.of(new BookingDate())));
 
-            assertThat(underTest.findByClinicAndStatus(1L, BookingDateState.WAITING))
+            assertThat(underTest.findByClinicAndStatus(1L, BookingDateState.AWAITING_CONFIRMATION))
                     .isNotNull();
 
-            verify(bookingDateJpaMock).findBookingDateByClinicUserIdAndBookingDateStatus(1L, BookingDateState.WAITING);
+            verify(bookingDateJpaMock).findBookingDateByClinicUserIdAndBookingDateStatus(1L, BookingDateState.AWAITING_CONFIRMATION);
 
         }
 
@@ -147,13 +147,13 @@
         void findByClinicAndStatus_shouldReturnBookingDate_shouldThrowException() {
 
             when(bookingDateJpaMock
-                    .findBookingDateByClinicUserIdAndBookingDateStatus(1L, BookingDateState.WAITING))
+                    .findBookingDateByClinicUserIdAndBookingDateStatus(1L, BookingDateState.AWAITING_CONFIRMATION))
                     .thenReturn(Optional.empty());
 
-            assertThatThrownBy(() -> underTest.findByClinicAndStatus(1L, BookingDateState.WAITING))
+            assertThatThrownBy(() -> underTest.findByClinicAndStatus(1L, BookingDateState.AWAITING_CONFIRMATION))
                     .isInstanceOf(ResourcesNotFoundException.class);
 
-            verify(bookingDateJpaMock).findBookingDateByClinicUserIdAndBookingDateStatus(1L, BookingDateState.WAITING);
+            verify(bookingDateJpaMock).findBookingDateByClinicUserIdAndBookingDateStatus(1L, BookingDateState.AWAITING_CONFIRMATION);
 
         }
 

@@ -3,6 +3,7 @@ package com.spring.clinicmedia.domain.model.enitity;
 import com.spring.clinicmedia.domain.model.BookingDateState;
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
 import com.spring.clinicmedia.domain.model.enitity.user.Doctor;
+import com.spring.clinicmedia.domain.model.enitity.user.Patient;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,8 +43,9 @@ public class BookingDate {
     @Enumerated(EnumType.STRING)
     private BookingDateState bookingDateStatus;
 
-
     @OneToOne
     private Location location;
 
+    @OneToOne
+    private Patient patient;
 }

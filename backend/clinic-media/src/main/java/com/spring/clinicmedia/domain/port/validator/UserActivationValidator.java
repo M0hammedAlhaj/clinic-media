@@ -4,6 +4,6 @@ import com.spring.clinicmedia.domain.model.UserType;
 
 public interface UserActivationValidator {
 
-    void validate(long userId, UserType userType);
+    void validateUserIsActive(long userId, UserType userType);
 
 }

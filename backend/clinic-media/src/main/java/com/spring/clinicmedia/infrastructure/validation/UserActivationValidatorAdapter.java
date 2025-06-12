@@ -19,7 +19,7 @@ public class UserActivationValidatorAdapter implements UserActivationValidator {
     }
 
     @Override
-    public void validate(long userId, UserType userType) {
+    public void validateUserIsActive(long userId, UserType userType) {
 
         UserRepository<User> userRepository =
                 userRepositoryDispatcher.getRepository(userType);

@@ -21,7 +21,7 @@ public class RequestFetcher {
     public List<ClinicDoctorRequest> execute(Long userId,
                                              UserType sender, int pageNumber) {
 
-        userActivationValidator.validate(userId, sender);
+        userActivationValidator.validateUserIsActive(userId, sender);
 
         return requestRepository.getRequestsBySenderIdAndSenderType(userId,
                 sender, PageRequest.of(pageNumber, 5));

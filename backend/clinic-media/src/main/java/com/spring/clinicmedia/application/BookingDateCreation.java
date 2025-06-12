@@ -61,9 +61,9 @@ public class BookingDateCreation {
                                Long doctorId,
                                BookingDateCreationRequest bookingDateCreationRequest) {
 
-        activationValidator.validate(clinicId, UserType.CLINIC);
+        activationValidator.validateUserIsActive(clinicId, UserType.CLINIC);
 
-        activationValidator.validate(doctorId, UserType.DOCTOR);
+        activationValidator.validateUserIsActive(doctorId, UserType.DOCTOR);
 
         Clinic clinic = clinicRepository.getUserByIdOrElseThrow(clinicId);
 
@@ -94,7 +94,7 @@ public class BookingDateCreation {
                 .doctor(doctor)
                 .bookingDateStarting(startBookingDate)
                 .bookingDateEnding(endBookingDate)
-                .bookingDateStatus(BookingDateState.WAITING)
+                .bookingDateStatus(BookingDateState.AWAITING_CONFIRMATION)
                 .build();
     }
 

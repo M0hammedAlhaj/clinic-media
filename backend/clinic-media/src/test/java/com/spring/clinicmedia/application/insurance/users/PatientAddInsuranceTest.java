@@ -1,6 +1,5 @@
-package com.spring.clinicmedia.application.insurance;
+package com.spring.clinicmedia.application.insurance.users;
 
-import com.spring.clinicmedia.application.insurance.users.PatientAddInsurance;
 import com.spring.clinicmedia.domain.exception.ResourceAlreadyExistsException;
 import com.spring.clinicmedia.domain.model.enitity.Insurance;
 import com.spring.clinicmedia.domain.model.enitity.user.Patient;

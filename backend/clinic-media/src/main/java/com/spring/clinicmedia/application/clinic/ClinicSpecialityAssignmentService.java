@@ -42,7 +42,7 @@ public class ClinicSpecialityAssignmentService {
 
         Clinic clinic = clinicRepository.getUserByIdOrElseThrow(clinicId);
 
-        activationValidator.validate(clinicId, UserType.CLINIC);
+        activationValidator.validateUserIsActive(clinicId, UserType.CLINIC);
 
         specialityValidator.validateSpecialityAssignment(clinicId, specialityName);
 

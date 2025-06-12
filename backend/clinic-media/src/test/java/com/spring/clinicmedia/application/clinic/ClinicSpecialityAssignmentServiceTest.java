@@ -62,7 +62,7 @@ class ClinicSpecialityAssignmentServiceTest {
 
         verify(specialityRepository).getByIdOrElseThrow(specialityName);
         verify(clinicRepository).getUserByIdOrElseThrow(clinicId);
-        verify(activationValidator).validate(clinicId, UserType.CLINIC);
+        verify(activationValidator).validateUserIsActive(clinicId, UserType.CLINIC);
         verify(specialityValidator).validateSpecialityAssignment(clinicId, specialityName);
         verify(clinicRepository).saveUser(clinic);
     }
@@ -115,12 +115,12 @@ class ClinicSpecialityAssignmentServiceTest {
 
         doThrow(new UserAccountNotActivation(Clinic.class, clinicId))
                 .when(activationValidator)
-                .validate(clinicId, UserType.CLINIC);
+                .validateUserIsActive(clinicId, UserType.CLINIC);
 
         // When / Then
         assertThatThrownBy(() -> underTest.addSpeciality(specialityName, clinicId))
                 .isInstanceOf(UserAccountNotActivation.class);
 
-        verify(activationValidator).validate(clinicId, UserType.CLINIC);
+        verify(activationValidator).validateUserIsActive(clinicId, UserType.CLINIC);
     }
 }
