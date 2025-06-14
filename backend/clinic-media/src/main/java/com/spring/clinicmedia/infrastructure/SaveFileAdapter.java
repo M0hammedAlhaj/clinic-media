@@ -10,17 +10,24 @@ import java.io.IOException;
 @Service
 public class SaveFileAdapter implements SaveFile {
 
-    private static final String PATH_SAVE = "";
+    private static final String PATH_SAVE = "./uploads/";
 
     @Override
     public String save(MultipartFile medicalRecordFile, String fileName) throws IOException {
-        String storageDir = ""; // Example path on server
-        File destFile = new File(storageDir + fileName);
+        try {
+            File directory = new File(PATH_SAVE);
+            if (!directory.exists()) {
+                boolean created = directory.mkdirs();
+                if (!created) {
+                    throw new IOException("Could not create directory: " + PATH_SAVE);
+                }
+            }
+            File destFile = new File(directory, fileName);
+            medicalRecordFile.transferTo(destFile);
+            return destFile.getAbsolutePath();
 
-        // Make sure the directory exists
-
-        // Save the file
-        medicalRecordFile.transferTo(destFile);
-        return destFile.getAbsolutePath();
+        } catch (Exception e) {
+            throw new IOException("Failed to save file: " + e.getMessage(), e);
+        }
     }
 }

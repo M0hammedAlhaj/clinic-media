@@ -1,5 +1,6 @@
 package com.spring.clinicmedia.presentation.controller;
 
+import com.spring.clinicmedia.application.MedicalRecordCreation;
 import com.spring.clinicmedia.application.insurance.users.PatientAddInsurance;
 import com.spring.clinicmedia.application.request.DoctorClinicRequestService;
 import com.spring.clinicmedia.application.request.RequestFetcher;
@@ -16,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -30,6 +32,8 @@ public class DoctorController {
     private final RequestStatusChangeHandler requestStatusChangeHandler;
 
     private final PatientAddInsurance patientAddInsurance;
+
+    private final MedicalRecordCreation medicalRecordCreation;
 
     @PutMapping("/clinic/{clinicId}")
     public ResponseEntity<String> doctorsAddClinic(@PathVariable int clinicId, @AuthenticationPrincipal CustomUserDetail user) {
@@ -68,10 +72,13 @@ public class DoctorController {
 
     @PutMapping("/{patientId}/medical-record")
     public ResponseEntity<?> doctorAddMedicalRecordPatient(@PathVariable Long patientId,
-                                                           @RequestBody MedicalRecordCreationRequest medicalRecordCreationRequest,
-                                                           @AuthenticationPrincipal CustomUserDetail doctor) {
+                                                           @RequestBody MedicalRecordCreationRequest
+                                                                   medicalRecordCreationRequest
+    ) throws IOException {
 
+        medicalRecordCreation.creation(medicalRecordCreationRequest, patientId);
 
+        return ResponseEntity.ok("Medical record added");
     }
 
 }

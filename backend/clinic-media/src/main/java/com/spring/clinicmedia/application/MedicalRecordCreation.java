@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,41 +30,42 @@ public class MedicalRecordCreation {
 
     @Transactional
     public MedicalRecord creation(MedicalRecordCreationRequest medicalRecordCreationRequest,
-                                  Long patientId,
-                                  MultipartFile medicalRecordFile) throws IOException {
+                                  Long patientId) throws IOException {
 
         Patient patient = patientRepository.getUserByIdOrElseThrow(patientId);
+        MultipartFile medicalRecordFile = medicalRecordCreationRequest.getFile();
 
-        try {
             fileMalwareScanner.scan(medicalRecordFile.getBytes());
-        } catch (IOException ioException) {
-            throw new IOException("Medical record file could not be scanned.");
-        }
-
-        MedicalRecord medicalRecord = MedicalRecord.builder()
-                .medicalRecordType(medicalRecordCreationRequest.getMedicalRecordType())
-                .description(medicalRecordCreationRequest.getDescription())
-                .build();
-
-        List<MedicalRecord> medicalRecordsPatient = Optional.ofNullable(patient.getMedicalRecord())
-                .orElseGet(ArrayList::new);
-        medicalRecordsPatient.add(medicalRecord);
-
-        patient.setMedicalRecord(medicalRecordsPatient);
 
 
-        /*
-            Save File -> local / Server
-         */
+        MedicalRecord medicalRecord = buildMedicalRecord(medicalRecordCreationRequest);
+
+        preparePatientAddMedicalRecord(patient);
+
+        patient.getMedicalRecord().add(medicalRecord);
+
 
         String fileName = medicalRecord.getMedicalRecordId() + "_" +
                 medicalRecordFile.getOriginalFilename();
 
         String url = saveFile.save(medicalRecordFile, fileName);
+
         medicalRecord.setUrl(url);
 
         medicalRecordRepository.save(medicalRecord);
 
         return medicalRecord;
+    }
+
+    private static void preparePatientAddMedicalRecord(Patient patient) {
+        Optional.ofNullable(patient.getMedicalRecord())
+                .orElseGet(ArrayList::new);
+    }
+
+    private static MedicalRecord buildMedicalRecord(MedicalRecordCreationRequest medicalRecordCreationRequest) {
+        return MedicalRecord.builder()
+                .medicalRecordType(medicalRecordCreationRequest.getMedicalRecordType())
+                .description(medicalRecordCreationRequest.getDescription())
+                .build();
     }
 }
