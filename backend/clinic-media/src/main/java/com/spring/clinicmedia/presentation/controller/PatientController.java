@@ -6,7 +6,7 @@ import com.spring.clinicmedia.application.clinic.ClinicsFetcher;
 import com.spring.clinicmedia.domain.model.BookingDateState;
 import com.spring.clinicmedia.domain.model.CustomUserDetail;
 import com.spring.clinicmedia.domain.model.enitity.BookingDate;
-import com.spring.clinicmedia.presentation.dto.BookAppointmentResponse;
+import com.spring.clinicmedia.presentation.dto.bookingDate.BookAppointmentResponse;
 import com.spring.clinicmedia.presentation.dto.ClinicResponse;
 import com.spring.clinicmedia.presentation.dto.FilterSpecification;
 import com.spring.clinicmedia.presentation.dto.PatientClinicView;

@@ -3,6 +3,7 @@ package com.spring.clinicmedia.domain.model.enitity;
 import com.spring.clinicmedia.domain.model.MedicalRecordType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "MEDICAL_RECORDES")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class MedicalRecord {
 
     @Id
@@ -26,5 +28,5 @@ public class MedicalRecord {
     @Column(name = "medical_record_type")
     private MedicalRecordType medicalRecordType;
 
-
+    
 }

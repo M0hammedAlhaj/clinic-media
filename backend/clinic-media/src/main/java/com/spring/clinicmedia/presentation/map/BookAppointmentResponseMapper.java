@@ -1,7 +1,7 @@
 package com.spring.clinicmedia.presentation.map;
 
 import com.spring.clinicmedia.domain.model.enitity.BookingDate;
-import com.spring.clinicmedia.presentation.dto.BookAppointmentResponse;
+import com.spring.clinicmedia.presentation.dto.bookingDate.BookAppointmentResponse;
 
 public class BookAppointmentResponseMapper {
 

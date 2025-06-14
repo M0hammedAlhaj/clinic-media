@@ -7,6 +7,7 @@ import com.spring.clinicmedia.application.request.RequestStatusChangeHandler;
 import com.spring.clinicmedia.domain.model.CustomUserDetail;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.ClinicDoctorRequest;
+import com.spring.clinicmedia.presentation.dto.MedicalRecordCreationRequest;
 import com.spring.clinicmedia.presentation.dto.request.RequestChangeStatus;
 import com.spring.clinicmedia.presentation.dto.request.RequestResponse;
 import com.spring.clinicmedia.presentation.map.RequestResponseMapper;
@@ -65,5 +66,12 @@ public class DoctorController {
         return ResponseEntity.ok("Doctor added");
     }
 
+    @PutMapping("/{patientId}/medical-record")
+    public ResponseEntity<?> doctorAddMedicalRecordPatient(@PathVariable Long patientId,
+                                                           @RequestBody MedicalRecordCreationRequest medicalRecordCreationRequest,
+                                                           @AuthenticationPrincipal CustomUserDetail doctor) {
+
+
+    }
 
 }

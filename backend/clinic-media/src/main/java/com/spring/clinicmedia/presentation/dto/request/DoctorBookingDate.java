@@ -1,6 +1,6 @@
 package com.spring.clinicmedia.presentation.dto.request;
 
-import com.spring.clinicmedia.presentation.dto.BookingDateResponse;
+import com.spring.clinicmedia.presentation.dto.bookingDate.BookingDateResponse;
 import lombok.Builder;
 import lombok.Data;
 

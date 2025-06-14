@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.presentation.dto;
+package com.spring.clinicmedia.presentation.dto.bookingDate;
 
 import lombok.Builder;
 import lombok.Data;
