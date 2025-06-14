@@ -22,50 +22,72 @@ public class ClamAvFileScannerService implements FileScanner {
                 InputStream in = socket.getInputStream()
         ) {
 
-            // Send INSTREAM command with null terminator
-            out.write(OPERATION_CLAIM.getBytes(StandardCharsets.US_ASCII));
-            out.flush();
+            sendInstreamCommand(out);
 
-            // Send the file in chunks of max 1024 bytes
-            int offset = 0;
-            while (offset < fileBytes.length) {
-                int chunkSize = Math.min(1024, fileBytes.length - offset);
+            sendData(out, fileBytes);
 
-                // Write chunk size as 4-byte big-endian integer
-                byte[] sizeBytes = ByteBuffer.
-                        allocate(4)
-                        .putInt(chunkSize).array();
-                out.write(sizeBytes);
+            finishSendData(out);
 
-                // Write chunk data
-                out.write(fileBytes, offset, chunkSize);
-                out.flush();
+            String response = readResponse(in);
 
-                offset += chunkSize;
-            }
+            validateResponse(response);
 
-            // Send zero-length chunk to mark EOF (End Of File)
-            out.write(new byte[]{0, 0, 0, 0});
-            out.flush();
-
-            // Read response line
-            BufferedReader reader =
-                    new BufferedReader(new InputStreamReader(in, StandardCharsets.US_ASCII));
-
-            String response = reader.readLine();
-            if (response == null) {
-                throw new IOException("No response received from ClamAV");
-            }
-
-            String cleanResult = response.replace("stream: ", "").trim();
-
-            if (cleanResult.equalsIgnoreCase("ok")) {
-                throw new VirusDetectedException("Malicious content detected — upload rejected.");
-            }
         } catch (IOException e) {
             throw new IOException("Error communicating with ClamAV", e);
         }
     }
 
+    private void sendData(OutputStream out, byte[] fileBytes) throws IOException {
+        int offset = 0;
+        while (offset < fileBytes.length) {
+            int chunkSize = Math.min(1024, fileBytes.length - offset);
+
+            // Write chunk size
+            byte[] sizeBytes = ByteBuffer
+                    .allocate(4)
+                    .putInt(chunkSize)
+                    .array();
+            out.write(sizeBytes);
+
+            // Write chunk data
+            out.write(fileBytes, offset, chunkSize);
+            out.flush();
+
+            offset += chunkSize;
+        }
+    }
+
+    private void finishSendData(OutputStream out) throws IOException {
+        out.write(new byte[]{0, 0, 0, 0});  // EOF marker
+        out.flush();
+    }
+
+    private void sendInstreamCommand(OutputStream out) throws IOException {
+        out.write(OPERATION_CLAIM.getBytes(StandardCharsets.US_ASCII));
+        out.flush();
+    }
+
+    private String readResponse(InputStream in) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.US_ASCII));
+        String response = reader.readLine();
+
+        if (response == null) {
+            throw new IOException("No response received from ClamAV");
+        }
+
+        return response.replace("stream: ", "").trim();
+    }
+
+    private void validateResponse(String cleanResult) {
+        if (!cleanResult.equalsIgnoreCase("ok")) {
+            throw new VirusDetectedException("Malicious content detected — upload rejected.");
+        }
+    }
+
+
 }
+
+
+
+
 
