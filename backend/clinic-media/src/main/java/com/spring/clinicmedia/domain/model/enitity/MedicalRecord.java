@@ -20,7 +20,7 @@ public class MedicalRecord {
 
     private String description;
 
-    private String photo;
+    private String url;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "medical_record_type")
