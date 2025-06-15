@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.application;
+package com.spring.clinicmedia.application.admin;
 
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.BookingDateState;

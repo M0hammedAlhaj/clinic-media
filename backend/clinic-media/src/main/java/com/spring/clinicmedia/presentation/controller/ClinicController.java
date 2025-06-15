@@ -1,7 +1,7 @@
 package com.spring.clinicmedia.presentation.controller;
 
 
-import com.spring.clinicmedia.application.BookingDateCreation;
+import com.spring.clinicmedia.application.booking.BookingDateCreation;
 import com.spring.clinicmedia.application.clinic.ClinicSpecialityAssignmentService;
 import com.spring.clinicmedia.application.insurance.users.ClinicAddInsurance;
 import com.spring.clinicmedia.application.request.DoctorClinicRequestService;

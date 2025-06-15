@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.application;
+package com.spring.clinicmedia.application.booking;
 
 import com.spring.clinicmedia.domain.exception.DoctorNotInClinicException;
 import com.spring.clinicmedia.domain.exception.UserAccountNotActivation;

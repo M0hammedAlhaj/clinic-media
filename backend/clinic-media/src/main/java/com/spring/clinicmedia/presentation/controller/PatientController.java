@@ -1,7 +1,7 @@
 package com.spring.clinicmedia.presentation.controller;
 
-import com.spring.clinicmedia.application.DoctorBookingDateFetcher;
-import com.spring.clinicmedia.application.PatientBookingManager;
+import com.spring.clinicmedia.application.admin.DoctorBookingDateFetcher;
+import com.spring.clinicmedia.application.patient.PatientBookingManager;
 import com.spring.clinicmedia.application.clinic.ClinicsFetcher;
 import com.spring.clinicmedia.domain.model.BookingDateState;
 import com.spring.clinicmedia.domain.model.CustomUserDetail;
@@ -72,5 +72,7 @@ public class PatientController {
     @PutMapping("/patientQuestion")
     public ResponseEntity<?> addPatientQuestion(PatientQuestionCreationResponse patientQuestionCreationResponse) {
 
+
+        return ResponseEntity.ok("Successful add");
     }
 }

@@ -16,7 +16,7 @@ public class PatientQuestionAdapter implements PatientQuestionRepository {
 
     @Override
     public PatientQuestion save(PatientQuestion entity) {
-        return [patientQuestionJpa.save(entity)];
+        return patientQuestionJpa.save(entity);
     }
 
     @Override

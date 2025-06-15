@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.application;
+package com.spring.clinicmedia.application.patient;
 
 import com.spring.clinicmedia.domain.exception.booking.InvalidBookingDateException;
 import com.spring.clinicmedia.domain.model.BookingDateState;
