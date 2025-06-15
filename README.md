@@ -127,3 +127,7 @@ The application implements JWT-based authentication with:
 3. Make your changes
 4. Add tests if applicable
 5. Submit a pull request
+
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/M0hammedAlhaj/clinic-media)
+
+
