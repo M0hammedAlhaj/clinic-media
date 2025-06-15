@@ -80,3 +80,9 @@ public class AdminController {
     }
 
 }
+/*
+8080
+Spring
+----connection
+Clam -> tcp /port
+ */

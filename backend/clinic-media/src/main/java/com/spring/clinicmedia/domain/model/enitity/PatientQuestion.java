@@ -1,11 +1,13 @@
 package com.spring.clinicmedia.domain.model.enitity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "PATIENT_QUESTIONES")
+@Builder
 public class    PatientQuestion {
 
     @Id

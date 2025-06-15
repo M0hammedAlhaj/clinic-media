@@ -6,10 +6,11 @@ import com.spring.clinicmedia.application.clinic.ClinicsFetcher;
 import com.spring.clinicmedia.domain.model.BookingDateState;
 import com.spring.clinicmedia.domain.model.CustomUserDetail;
 import com.spring.clinicmedia.domain.model.enitity.BookingDate;
-import com.spring.clinicmedia.presentation.dto.bookingDate.BookAppointmentResponse;
 import com.spring.clinicmedia.presentation.dto.ClinicResponse;
 import com.spring.clinicmedia.presentation.dto.FilterSpecification;
 import com.spring.clinicmedia.presentation.dto.PatientClinicView;
+import com.spring.clinicmedia.presentation.dto.PatientQuestionCreationResponse;
+import com.spring.clinicmedia.presentation.dto.bookingDate.BookAppointmentResponse;
 import com.spring.clinicmedia.presentation.map.BookAppointmentResponseMapper;
 import com.spring.clinicmedia.presentation.map.ClinicResponseMapper;
 import com.spring.clinicmedia.presentation.map.PatientClinicViewMapper;
@@ -68,4 +69,8 @@ public class PatientController {
         return ResponseEntity.ok(BookAppointmentResponseMapper.createFron(bookingDate));
     }
 
+    @PutMapping("/patientQuestion")
+    public ResponseEntity<?> addPatientQuestion(PatientQuestionCreationResponse patientQuestionCreationResponse) {
+
+    }
 }

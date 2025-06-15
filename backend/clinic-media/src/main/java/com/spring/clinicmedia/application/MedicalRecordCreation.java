@@ -29,13 +29,13 @@ public class MedicalRecordCreation {
     private final SaveFile saveFile;
 
     @Transactional
-    public MedicalRecord creation(MedicalRecordCreationRequest medicalRecordCreationRequest,
-                                  Long patientId) throws IOException {
+    public void creation(MedicalRecordCreationRequest medicalRecordCreationRequest,
+                         Long patientId) throws IOException {
 
         Patient patient = patientRepository.getUserByIdOrElseThrow(patientId);
         MultipartFile medicalRecordFile = medicalRecordCreationRequest.getFile();
 
-            fileMalwareScanner.scan(medicalRecordFile.getBytes());
+        fileMalwareScanner.scan(medicalRecordFile.getBytes());
 
 
         MedicalRecord medicalRecord = buildMedicalRecord(medicalRecordCreationRequest);
@@ -53,8 +53,6 @@ public class MedicalRecordCreation {
         medicalRecord.setUrl(url);
 
         medicalRecordRepository.save(medicalRecord);
-
-        return medicalRecord;
     }
 
     private static void preparePatientAddMedicalRecord(Patient patient) {
