@@ -28,13 +28,4 @@ public class MedicalRecord {
     @Column(name = "medical_record_type")
     private MedicalRecordType medicalRecordType;
 
- /*
-    1L
-    Medical Record - >
-    ""
-    "path"
-    LAB_RESULT
-    CLINIC -> uploadType
-    1L -> clinicId
-  */
 }

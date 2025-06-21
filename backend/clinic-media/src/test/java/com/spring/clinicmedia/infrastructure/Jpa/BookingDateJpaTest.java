@@ -24,7 +24,8 @@ class BookingDateJpaTest {
     void bookingCompletelyBefore_shouldNotOverlap() {
         Doctor doctor = saveTestDoctor();
 
-        BookingDate existing = saveBooking(doctor, LocalDateTime.of(2025, 6, 10, 10, 0), LocalDateTime.of(2025, 6, 10, 11, 0));
+        BookingDate existing =
+                saveBooking(doctor, LocalDateTime.of(2025, 6, 10, 10, 0), LocalDateTime.of(2025, 6, 10, 11, 0));
         boolean overlapping = underTest.existsOverlappingBookingByDoctorId(doctor.getUserId(),
                 LocalDateTime.of(2025, 6, 10, 9, 0),
                 LocalDateTime.of(2025, 6, 10, 9, 59));

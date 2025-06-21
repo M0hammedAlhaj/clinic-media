@@ -1,6 +1,6 @@
 package com.spring.clinicmedia.presentation.controller;
 
-import com.spring.clinicmedia.application.admin.DoctorBookingDateFetcher;
+import com.spring.clinicmedia.application.doctor.DoctorBookingDateFetcher;
 import com.spring.clinicmedia.application.patient.PatientBookingManager;
 import com.spring.clinicmedia.application.clinic.ClinicsFetcher;
 import com.spring.clinicmedia.domain.model.BookingDateState;
