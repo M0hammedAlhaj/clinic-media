@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.infrastructure;
+package com.spring.clinicmedia.infrastructure.notifications;
 
 import com.spring.clinicmedia.application.PresenceService;
 import com.spring.clinicmedia.domain.NotificationSender;
@@ -14,17 +14,18 @@ public class NotificationSenderBrowser implements NotificationSender {
 
     private final PresenceService presenceService;
 
+
     //user/{username}/queue/notifications
     @Override
-    public void notify(String message,
-                       String userName) {
-        if (presenceService.isUserOnline(userName)) {
-            simpMessagingTemplate.convertAndSendToUser(userName,
+    public boolean isNotify(String message,
+                          String receiverUserName) {
+        if (presenceService.isUserOnline(receiverUserName)) {
+            simpMessagingTemplate.convertAndSendToUser(receiverUserName,
                     "/queue/notifications",
                     message);
-        } else {
-
+            return true;
         }
+        return false;
     }
 
 }

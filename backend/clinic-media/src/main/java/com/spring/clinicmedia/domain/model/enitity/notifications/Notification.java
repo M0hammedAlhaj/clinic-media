@@ -1,9 +1,6 @@
 package com.spring.clinicmedia.domain.model.enitity.notifications;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -18,9 +15,16 @@ public class Notification {
 
     private String message;
 
-    private LocalDateTime localDateTime;
+    @Column(name = "updated_at")
+    private LocalDateTime createdAt;
 
+    @Column(name = "is_receive")
     private boolean isReceive;
 
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDateTime.now();
+        this.isReceive = true;
+    }
 
 }

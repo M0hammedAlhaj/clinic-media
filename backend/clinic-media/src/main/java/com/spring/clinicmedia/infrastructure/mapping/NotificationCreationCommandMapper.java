@@ -5,10 +5,9 @@ import com.spring.clinicmedia.domain.model.enitity.notifications.Notification;
 
 public class NotificationCreationCommandMapper {
 
-    public static Notification assignData(NotificationCreationCommand<?> command, Notification notification) {
+    public static Notification assignData(NotificationCreationCommand<?> command,
+                                          Notification notification) {
         notification.setMessage(command.getMessage());
-        notification.setLocalDateTime(command.getLocalDateTime());
-        notification.setReceive(command.isReceive());
         return notification;
     }
 }

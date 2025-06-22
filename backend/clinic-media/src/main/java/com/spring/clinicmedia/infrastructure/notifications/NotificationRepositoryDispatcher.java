@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.infrastructure;
+package com.spring.clinicmedia.infrastructure.notifications;
 
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.notifications.Notification;

@@ -24,10 +24,10 @@ public class NotificationFactoryAdapter implements NotificationFactory {
     @Override
     public Notification create(NotificationCreationCommand<? extends User> command) {
         SpecificNotificationCreator<? extends User> creator =
-                specificCreators.get(command.getUserType());
+                specificCreators.get(command.getReceiverType());
 
         if (creator == null) {
-            throw new IllegalArgumentException("Unsupported user type: " + command.getUserType());
+            throw new IllegalArgumentException("Unsupported user type: " + command.getReceiverType());
         }
 
 

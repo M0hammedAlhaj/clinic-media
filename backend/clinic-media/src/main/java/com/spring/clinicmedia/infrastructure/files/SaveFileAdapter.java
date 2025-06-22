@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.infrastructure;
+package com.spring.clinicmedia.infrastructure.files;
 
 import com.spring.clinicmedia.domain.files.SaveFile;
 import org.springframework.stereotype.Service;
