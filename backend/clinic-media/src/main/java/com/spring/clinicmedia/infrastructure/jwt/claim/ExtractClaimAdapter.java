@@ -1,7 +1,7 @@
 package com.spring.clinicmedia.infrastructure.jwt.claim;
 
 import com.spring.clinicmedia.domain.model.SecretKeyJwt;
-import com.spring.clinicmedia.domain.port.jwt.ExtractClaim;
+import com.spring.clinicmedia.domain.jwt.ExtractClaim;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.stereotype.Component;

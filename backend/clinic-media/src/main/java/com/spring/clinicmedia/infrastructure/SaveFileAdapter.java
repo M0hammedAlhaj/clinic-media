@@ -1,6 +1,6 @@
 package com.spring.clinicmedia.infrastructure;
 
-import com.spring.clinicmedia.domain.port.SaveFile;
+import com.spring.clinicmedia.domain.SaveFile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -6,10 +6,10 @@ import com.spring.clinicmedia.domain.exception.UserAccountNotActivation;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.Speciality;
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
-import com.spring.clinicmedia.domain.port.repository.user.ClinicRepository;
-import com.spring.clinicmedia.domain.port.repository.SpecialityRepository;
-import com.spring.clinicmedia.domain.port.validator.SpecialityValidator;
-import com.spring.clinicmedia.domain.port.validator.UserActivationValidator;
+import com.spring.clinicmedia.domain.repository.user.ClinicRepository;
+import com.spring.clinicmedia.domain.repository.SpecialityRepository;
+import com.spring.clinicmedia.domain.validator.SpecialityValidator;
+import com.spring.clinicmedia.domain.validator.UserActivationValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

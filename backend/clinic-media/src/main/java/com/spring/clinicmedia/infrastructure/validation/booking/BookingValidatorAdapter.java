@@ -1,11 +1,10 @@
 package com.spring.clinicmedia.infrastructure.validation.booking;
 
-import com.spring.clinicmedia.domain.port.validator.booking.BookingConflictValidator;
-import com.spring.clinicmedia.domain.port.validator.booking.BookingValidator;
-import com.spring.clinicmedia.domain.port.validator.booking.DateRangeValidator;
-import com.spring.clinicmedia.domain.port.validator.booking.DoctorInClinicValidator;
+import com.spring.clinicmedia.domain.validator.booking.BookingConflictValidator;
+import com.spring.clinicmedia.domain.validator.booking.BookingValidator;
+import com.spring.clinicmedia.domain.validator.booking.DateRangeValidator;
+import com.spring.clinicmedia.domain.validator.booking.DoctorInClinicValidator;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

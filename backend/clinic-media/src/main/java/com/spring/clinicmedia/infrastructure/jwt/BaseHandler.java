@@ -1,6 +1,6 @@
 package com.spring.clinicmedia.infrastructure.jwt;
 
-import com.spring.clinicmedia.domain.port.Handler;
+import com.spring.clinicmedia.domain.Handler;
 import lombok.Data;
 
 @Data

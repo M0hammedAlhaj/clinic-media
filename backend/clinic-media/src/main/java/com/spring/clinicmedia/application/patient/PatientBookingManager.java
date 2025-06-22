@@ -4,9 +4,9 @@ import com.spring.clinicmedia.domain.exception.booking.InvalidBookingDateExcepti
 import com.spring.clinicmedia.domain.model.BookingDateState;
 import com.spring.clinicmedia.domain.model.enitity.BookingDate;
 import com.spring.clinicmedia.domain.model.enitity.user.Patient;
-import com.spring.clinicmedia.domain.port.Notification;
-import com.spring.clinicmedia.domain.port.repository.BookingDateRepository;
-import com.spring.clinicmedia.domain.port.repository.user.PatientRepository;
+import com.spring.clinicmedia.domain.NotificationSender;
+import com.spring.clinicmedia.domain.repository.BookingDateRepository;
+import com.spring.clinicmedia.domain.repository.user.PatientRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +19,7 @@ public class PatientBookingManager {
 
     private final BookingDateRepository bookingDateRepository;
 
-    private final Notification notification;
+    private final NotificationSender notificationSender;
 
     /*
     SEND FOR CLINIC AND DOCTOR ->
@@ -40,8 +40,8 @@ public class PatientBookingManager {
 
         BookingDate savedBooking = bookingDateRepository.save(bookingDate);
 
-        notification.notify("", bookingDate.getDoctor().getRegistration().getName());
-        notification.notify("", bookingDate.getClinic().getRegistration().getName());
+        notificationSender.notify("", bookingDate.getDoctor().getRegistration().getName());
+        notificationSender.notify("", bookingDate.getClinic().getRegistration().getName());
         return savedBooking;
     }
 }

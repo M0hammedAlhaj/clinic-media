@@ -3,7 +3,7 @@ package com.spring.clinicmedia.infrastructure.repository;
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.enitity.Registration;
 import com.spring.clinicmedia.domain.model.enitity.user.Admin;
-import com.spring.clinicmedia.domain.port.repository.user.AdminRepository;
+import com.spring.clinicmedia.domain.repository.user.AdminRepository;
 import com.spring.clinicmedia.infrastructure.Jpa.users.AdminJpa;
 import com.spring.clinicmedia.infrastructure.repository.users.AdminRepositoryAdapter;
 import org.junit.jupiter.api.AfterEach;

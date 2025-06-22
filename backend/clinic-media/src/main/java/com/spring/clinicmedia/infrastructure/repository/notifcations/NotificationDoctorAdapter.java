@@ -2,7 +2,7 @@ package com.spring.clinicmedia.infrastructure.repository.notifcations;
 
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.enitity.notifications.NotificationDoctor;
-import com.spring.clinicmedia.domain.port.repository.notifications.NotificationDoctorRepository;
+import com.spring.clinicmedia.domain.repository.notifications.NotificationDoctorRepository;
 import com.spring.clinicmedia.infrastructure.Jpa.notifcations.NotificationDoctorJpa;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;

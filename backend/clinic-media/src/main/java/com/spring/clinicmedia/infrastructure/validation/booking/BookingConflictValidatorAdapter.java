@@ -1,8 +1,8 @@
 package com.spring.clinicmedia.infrastructure.validation.booking;
 
 import com.spring.clinicmedia.domain.exception.booking.BookingConflictException;
-import com.spring.clinicmedia.domain.port.repository.BookingDateRepository;
-import com.spring.clinicmedia.domain.port.validator.booking.BookingConflictValidator;
+import com.spring.clinicmedia.domain.repository.BookingDateRepository;
+import com.spring.clinicmedia.domain.validator.booking.BookingConflictValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

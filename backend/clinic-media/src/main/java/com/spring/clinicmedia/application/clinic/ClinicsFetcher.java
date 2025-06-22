@@ -1,7 +1,7 @@
 package com.spring.clinicmedia.application.clinic;
 
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
-import com.spring.clinicmedia.domain.port.repository.user.ClinicRepository;
+import com.spring.clinicmedia.domain.repository.user.ClinicRepository;
 import com.spring.clinicmedia.presentation.dto.FilterSpecification;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;

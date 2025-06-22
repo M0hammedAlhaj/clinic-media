@@ -2,7 +2,7 @@ package com.spring.clinicmedia.infrastructure.repository.users;
 
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.enitity.user.Admin;
-import com.spring.clinicmedia.domain.port.repository.user.AdminRepository;
+import com.spring.clinicmedia.domain.repository.user.AdminRepository;
 import com.spring.clinicmedia.infrastructure.Jpa.users.AdminJpa;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;

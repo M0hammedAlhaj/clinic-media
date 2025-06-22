@@ -2,8 +2,8 @@ package com.spring.clinicmedia.application.patient;
 
 import com.spring.clinicmedia.domain.model.enitity.PatientQuestion;
 import com.spring.clinicmedia.domain.model.enitity.user.Patient;
-import com.spring.clinicmedia.domain.port.repository.PatientQuestionRepository;
-import com.spring.clinicmedia.domain.port.repository.user.PatientRepository;
+import com.spring.clinicmedia.domain.repository.PatientQuestionRepository;
+import com.spring.clinicmedia.domain.repository.user.PatientRepository;
 import com.spring.clinicmedia.presentation.dto.PatientQuestionCreationResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

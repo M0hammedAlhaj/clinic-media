@@ -2,10 +2,10 @@ package com.spring.clinicmedia.application;
 
 import com.spring.clinicmedia.domain.model.enitity.MedicalRecord;
 import com.spring.clinicmedia.domain.model.enitity.user.Patient;
-import com.spring.clinicmedia.domain.port.FileMalwareScanner;
-import com.spring.clinicmedia.domain.port.SaveFile;
-import com.spring.clinicmedia.domain.port.repository.MedicalRecordRepository;
-import com.spring.clinicmedia.domain.port.repository.user.PatientRepository;
+import com.spring.clinicmedia.domain.FileMalwareScanner;
+import com.spring.clinicmedia.domain.SaveFile;
+import com.spring.clinicmedia.domain.repository.MedicalRecordRepository;
+import com.spring.clinicmedia.domain.repository.user.PatientRepository;
 import com.spring.clinicmedia.presentation.dto.MedicalRecordCreationRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

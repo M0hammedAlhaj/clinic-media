@@ -1,7 +1,7 @@
 package com.spring.clinicmedia.infrastructure.validation.jwt;
 
-import com.spring.clinicmedia.domain.port.Handler;
-import com.spring.clinicmedia.domain.port.repository.RegistrationRepository;
+import com.spring.clinicmedia.domain.Handler;
+import com.spring.clinicmedia.domain.repository.RegistrationRepository;
 import com.spring.clinicmedia.infrastructure.jwt.BaseHandler;
 import com.spring.clinicmedia.infrastructure.jwt.claim.ExtractClaimEmail;
 import org.springframework.beans.factory.annotation.Qualifier;

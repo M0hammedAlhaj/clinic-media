@@ -1,7 +1,7 @@
 package com.spring.clinicmedia.infrastructure.jwt;
 
 import com.spring.clinicmedia.domain.model.SecretKeyJwt;
-import com.spring.clinicmedia.domain.port.jwt.GenerateToken;
+import com.spring.clinicmedia.domain.jwt.GenerateToken;
 import io.jsonwebtoken.Jwts;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;

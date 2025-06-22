@@ -2,11 +2,10 @@ package com.spring.clinicmedia.infrastructure.repository;
 
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.enitity.PatientQuestion;
-import com.spring.clinicmedia.domain.port.repository.PatientQuestionRepository;
+import com.spring.clinicmedia.domain.repository.PatientQuestionRepository;
 import com.spring.clinicmedia.infrastructure.Jpa.PatientQuestionJpa;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component
 @AllArgsConstructor

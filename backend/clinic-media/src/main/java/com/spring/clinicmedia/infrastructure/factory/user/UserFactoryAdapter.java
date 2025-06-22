@@ -12,16 +12,14 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
-public class UserFactoryAdapter implements UserFactory<UserCreationCommand> {
+public class UserFactoryAdapter implements UserFactory {
 
-    private Map<UserType, SpecificUserCreator> creators;
-
-    private final List<SpecificUserCreator> creatorList;
+    private final Map<UserType, SpecificUserCreator> creators;
 
     public UserFactoryAdapter(List<SpecificUserCreator> creatorsList) {
-        this.creatorList = creatorsList;
-        this.creators = creatorList.stream()
-                .collect(Collectors.toMap(SpecificUserCreator::getUserType, creator -> creator));
+        this.creators = creatorsList.stream()
+                .collect(Collectors.toMap(SpecificUserCreator::getUserType,
+                        creator -> creator));
     }
 
     @Override

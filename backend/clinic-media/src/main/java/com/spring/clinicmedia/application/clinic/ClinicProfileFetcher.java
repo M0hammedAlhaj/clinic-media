@@ -2,7 +2,7 @@ package com.spring.clinicmedia.application.clinic;
 
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
-import com.spring.clinicmedia.domain.port.repository.user.ClinicRepository;
+import com.spring.clinicmedia.domain.repository.user.ClinicRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -3,7 +3,7 @@ package com.spring.clinicmedia.infrastructure.repository.users;
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.user.Doctor;
-import com.spring.clinicmedia.domain.port.repository.user.DoctorRepository;
+import com.spring.clinicmedia.domain.repository.user.DoctorRepository;
 import com.spring.clinicmedia.infrastructure.Jpa.users.DoctorJpa;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;

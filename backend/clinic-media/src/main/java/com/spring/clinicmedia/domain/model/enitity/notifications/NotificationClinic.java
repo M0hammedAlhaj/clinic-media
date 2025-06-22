@@ -3,6 +3,7 @@ package com.spring.clinicmedia.domain.model.enitity.notifications;
 
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
 import jakarta.persistence.*;
+import lombok.Data;
 
 
 @Entity
@@ -11,6 +12,7 @@ import jakarta.persistence.*;
         name = "notificationId",
         column = @Column(name = "notification_clinic_id")
 )
+@Data
 public class NotificationClinic extends Notification {
 
     @ManyToOne

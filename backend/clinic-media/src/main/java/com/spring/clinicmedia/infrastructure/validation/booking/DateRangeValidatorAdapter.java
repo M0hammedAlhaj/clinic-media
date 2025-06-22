@@ -1,7 +1,7 @@
 package com.spring.clinicmedia.infrastructure.validation.booking;
 
 import com.spring.clinicmedia.domain.exception.booking.InvalidBookingDateException;
-import com.spring.clinicmedia.domain.port.validator.booking.DateRangeValidator;
+import com.spring.clinicmedia.domain.validator.booking.DateRangeValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

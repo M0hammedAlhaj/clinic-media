@@ -3,7 +3,7 @@ package com.spring.clinicmedia.infrastructure.repository.notifcations;
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.enitity.notifications.NotificationClinic;
 import com.spring.clinicmedia.domain.model.enitity.notifications.NotificationPatient;
-import com.spring.clinicmedia.domain.port.repository.notifications.NotificationPatientRepository;
+import com.spring.clinicmedia.domain.repository.notifications.NotificationPatientRepository;
 import com.spring.clinicmedia.infrastructure.Jpa.notifcations.NotificationPatientJpa;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;

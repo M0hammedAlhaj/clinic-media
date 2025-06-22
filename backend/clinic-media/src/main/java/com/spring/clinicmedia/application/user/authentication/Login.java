@@ -1,8 +1,8 @@
 package com.spring.clinicmedia.application.user.authentication;
 
 import com.spring.clinicmedia.domain.model.enitity.Registration;
-import com.spring.clinicmedia.domain.port.jwt.GenerateToken;
-import com.spring.clinicmedia.domain.port.repository.RegistrationRepository;
+import com.spring.clinicmedia.domain.jwt.GenerateToken;
+import com.spring.clinicmedia.domain.repository.RegistrationRepository;
 import com.spring.clinicmedia.domain.result.UserLoginResult;
 import com.spring.clinicmedia.presentation.dto.login.UserLoginRequest;
 import lombok.AllArgsConstructor;
