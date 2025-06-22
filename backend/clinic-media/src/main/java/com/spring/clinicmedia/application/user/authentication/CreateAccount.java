@@ -22,7 +22,7 @@ public class CreateAccount {
 
     private final EmailValidator emailValidator;
 
-    private final UserFactory<UserCreationCommand> userFactory;
+    private final UserFactory userFactory;
 
     private final PasswordEncoder passwordEncoder;
 

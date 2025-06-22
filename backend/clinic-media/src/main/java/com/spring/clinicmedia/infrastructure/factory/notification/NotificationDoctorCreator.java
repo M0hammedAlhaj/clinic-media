@@ -26,5 +26,4 @@ public class NotificationDoctorCreator implements SpecificNotificationCreator<Do
         return notificationDoctor;
     }
 
-
 }

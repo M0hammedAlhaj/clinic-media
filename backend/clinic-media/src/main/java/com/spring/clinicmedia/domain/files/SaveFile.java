@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.domain;
+package com.spring.clinicmedia.domain.files;
 
 import org.springframework.web.multipart.MultipartFile;
 

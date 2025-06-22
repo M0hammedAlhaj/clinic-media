@@ -19,7 +19,9 @@ public class NotificationSenderBrowser implements NotificationSender {
     public void notify(String message,
                        String userName) {
         if (presenceService.isUserOnline(userName)) {
-            simpMessagingTemplate.convertAndSendToUser(userName, "/queue/notifications", message);
+            simpMessagingTemplate.convertAndSendToUser(userName,
+                    "/queue/notifications",
+                    message);
         } else {
 
         }
