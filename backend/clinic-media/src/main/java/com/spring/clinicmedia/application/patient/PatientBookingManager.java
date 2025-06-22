@@ -4,6 +4,7 @@ import com.spring.clinicmedia.domain.exception.booking.InvalidBookingDateExcepti
 import com.spring.clinicmedia.domain.model.BookingDateState;
 import com.spring.clinicmedia.domain.model.enitity.BookingDate;
 import com.spring.clinicmedia.domain.model.enitity.user.Patient;
+import com.spring.clinicmedia.domain.port.Notification;
 import com.spring.clinicmedia.domain.port.repository.BookingDateRepository;
 import com.spring.clinicmedia.domain.port.repository.PatientRepository;
 import lombok.AllArgsConstructor;
@@ -18,6 +19,11 @@ public class PatientBookingManager {
 
     private final BookingDateRepository bookingDateRepository;
 
+    private final Notification notification;
+
+    /*
+    SEND FOR CLINIC AND DOCTOR ->
+     */
     @Transactional
     public BookingDate bookAppointment(Long patientId, Long bookingId) {
 
@@ -31,6 +37,11 @@ public class PatientBookingManager {
         bookingDate.setPatient(patient);
         bookingDate.setBookingDateStatus(BookingDateState.UPCOMING);
 
-        return bookingDateRepository.save(bookingDate);
+
+        BookingDate savedBooking = bookingDateRepository.save(bookingDate);
+
+        notification.notify("", bookingDate.getDoctor().getRegistration().getName());
+        notification.notify("", bookingDate.getClinic().getRegistration().getName());
+        return savedBooking;
     }
 }

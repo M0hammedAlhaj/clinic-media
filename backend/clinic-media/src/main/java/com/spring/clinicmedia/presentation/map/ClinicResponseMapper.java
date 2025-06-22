@@ -19,7 +19,7 @@ public class ClinicResponseMapper {
     public static ClinicResponse createFrom(Clinic clinic) {
         return ClinicResponse.builder()
                 .clinicName(clinic.getRegistration().getName())
-                .city(clinic.getClincLocations()
+                .city(clinic.getClinicLocations()
                         .stream()
                         .map(Location::getCountryName)
                         .collect(Collectors.toList()))

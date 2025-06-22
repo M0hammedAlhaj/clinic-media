@@ -4,6 +4,7 @@ import com.spring.clinicmedia.domain.model.enitity.Insurance;
 import com.spring.clinicmedia.domain.model.enitity.Location;
 import com.spring.clinicmedia.domain.model.enitity.MedicalRecord;
 import com.spring.clinicmedia.domain.model.enitity.PatientQuestion;
+import com.spring.clinicmedia.domain.model.enitity.notifications.NotificationPatient;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -43,5 +44,6 @@ public class Patient extends User {
     @JoinColumn(name = "patient_question_id")
     private PatientQuestion patientQuestion;
 
-
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    private List<NotificationPatient> notificationPatient;
 }
