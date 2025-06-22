@@ -5,7 +5,7 @@ import com.spring.clinicmedia.domain.model.enitity.user.Patient;
 import com.spring.clinicmedia.domain.port.FileMalwareScanner;
 import com.spring.clinicmedia.domain.port.SaveFile;
 import com.spring.clinicmedia.domain.port.repository.MedicalRecordRepository;
-import com.spring.clinicmedia.domain.port.repository.PatientRepository;
+import com.spring.clinicmedia.domain.port.repository.user.PatientRepository;
 import com.spring.clinicmedia.presentation.dto.MedicalRecordCreationRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

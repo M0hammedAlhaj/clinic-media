@@ -2,7 +2,7 @@ package com.spring.clinicmedia.infrastructure;
 
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.user.User;
-import com.spring.clinicmedia.domain.port.repository.*;
+import com.spring.clinicmedia.domain.port.repository.user.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

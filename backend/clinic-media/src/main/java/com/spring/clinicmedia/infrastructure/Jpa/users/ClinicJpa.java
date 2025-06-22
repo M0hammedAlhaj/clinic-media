@@ -1,4 +1,4 @@
-package com.spring.clinicmedia.infrastructure.Jpa;
+package com.spring.clinicmedia.infrastructure.Jpa.users;
 
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
 import org.springframework.data.domain.Page;

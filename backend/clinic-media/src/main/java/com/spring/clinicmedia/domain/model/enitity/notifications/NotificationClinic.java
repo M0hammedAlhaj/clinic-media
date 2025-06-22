@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table(name = "NOTIFICATION_CLINIC") // or your actual table name
+@Table(name = "NOTIFICATION_CLINIC")
 @AttributeOverride(
         name = "notificationId",
         column = @Column(name = "notification_clinic_id")

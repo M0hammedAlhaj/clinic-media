@@ -2,7 +2,8 @@ package com.spring.clinicmedia.infrastructure.repository;
 
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
-import com.spring.clinicmedia.infrastructure.Jpa.ClinicJpa;
+import com.spring.clinicmedia.infrastructure.Jpa.users.ClinicJpa;
+import com.spring.clinicmedia.infrastructure.repository.users.ClinicRepositoryAdapter;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

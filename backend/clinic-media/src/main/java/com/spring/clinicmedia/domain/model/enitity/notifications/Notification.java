@@ -17,4 +17,8 @@ public class Notification {
     private String message;
 
     private LocalDateTime localDateTime;
+
+    private boolean isReceive;
+
+
 }

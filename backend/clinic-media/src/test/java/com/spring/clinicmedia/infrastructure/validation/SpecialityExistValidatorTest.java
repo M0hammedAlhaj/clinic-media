@@ -2,7 +2,7 @@ package com.spring.clinicmedia.infrastructure.validation;
 
 import com.spring.clinicmedia.domain.exception.ResourceAlreadyExistsException;
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
-import com.spring.clinicmedia.domain.port.repository.ClinicRepository;
+import com.spring.clinicmedia.domain.port.repository.user.ClinicRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

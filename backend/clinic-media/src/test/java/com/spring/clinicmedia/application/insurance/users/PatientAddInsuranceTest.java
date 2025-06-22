@@ -4,7 +4,7 @@ import com.spring.clinicmedia.domain.exception.ResourceAlreadyExistsException;
 import com.spring.clinicmedia.domain.model.enitity.Insurance;
 import com.spring.clinicmedia.domain.model.enitity.user.Patient;
 import com.spring.clinicmedia.domain.port.repository.InsuranceRepository;
-import com.spring.clinicmedia.domain.port.repository.PatientRepository;
+import com.spring.clinicmedia.domain.port.repository.user.PatientRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

@@ -3,7 +3,7 @@ package com.spring.clinicmedia.application.clinic;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.Speciality;
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
-import com.spring.clinicmedia.domain.port.repository.ClinicRepository;
+import com.spring.clinicmedia.domain.port.repository.user.ClinicRepository;
 import com.spring.clinicmedia.domain.port.repository.SpecialityRepository;
 import com.spring.clinicmedia.domain.port.validator.SpecialityValidator;
 import com.spring.clinicmedia.domain.port.validator.UserActivationValidator;

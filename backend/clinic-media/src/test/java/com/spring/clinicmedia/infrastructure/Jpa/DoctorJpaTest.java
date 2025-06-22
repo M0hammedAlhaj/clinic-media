@@ -2,6 +2,8 @@ package com.spring.clinicmedia.infrastructure.Jpa;
 
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
 import com.spring.clinicmedia.domain.model.enitity.user.Doctor;
+import com.spring.clinicmedia.infrastructure.Jpa.users.ClinicJpa;
+import com.spring.clinicmedia.infrastructure.Jpa.users.DoctorJpa;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

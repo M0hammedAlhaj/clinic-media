@@ -16,11 +16,13 @@ public class NotificationBrowser implements Notification {
 
     //user/{username}/queue/notifications
     @Override
-    public void notify(String message, String userName) {
+    public void notify(String message,
+                       String userName) {
         if (presenceService.isUserOnline(userName)) {
             simpMessagingTemplate.convertAndSendToUser(userName, "/queue/notifications", message);
         } else {
-        //
+
         }
     }
+
 }

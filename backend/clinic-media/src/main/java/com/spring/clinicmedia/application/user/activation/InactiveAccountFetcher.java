@@ -2,7 +2,7 @@ package com.spring.clinicmedia.application.user.activation;
 
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.user.User;
-import com.spring.clinicmedia.domain.port.repository.UserRepository;
+import com.spring.clinicmedia.domain.port.repository.user.UserRepository;
 import com.spring.clinicmedia.infrastructure.UserRepositoryDispatcher;
 import com.spring.clinicmedia.presentation.dto.admin.InactiveAccountResponse;
 import lombok.AllArgsConstructor;

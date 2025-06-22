@@ -4,7 +4,7 @@ import com.spring.clinicmedia.domain.exception.ResourceAlreadyExistsException;
 import com.spring.clinicmedia.domain.model.enitity.Insurance;
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
 import com.spring.clinicmedia.domain.model.enitity.user.User;
-import com.spring.clinicmedia.domain.port.repository.ClinicRepository;
+import com.spring.clinicmedia.domain.port.repository.user.ClinicRepository;
 import com.spring.clinicmedia.domain.port.repository.InsuranceRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

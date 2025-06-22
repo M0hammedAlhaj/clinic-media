@@ -5,7 +5,7 @@ import com.spring.clinicmedia.domain.model.enitity.Insurance;
 import com.spring.clinicmedia.domain.model.enitity.user.Patient;
 import com.spring.clinicmedia.domain.model.enitity.user.User;
 import com.spring.clinicmedia.domain.port.repository.InsuranceRepository;
-import com.spring.clinicmedia.domain.port.repository.PatientRepository;
+import com.spring.clinicmedia.domain.port.repository.user.PatientRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -6,7 +6,7 @@ import com.spring.clinicmedia.domain.model.enitity.BookingDate;
 import com.spring.clinicmedia.domain.model.enitity.user.Patient;
 import com.spring.clinicmedia.domain.port.Notification;
 import com.spring.clinicmedia.domain.port.repository.BookingDateRepository;
-import com.spring.clinicmedia.domain.port.repository.PatientRepository;
+import com.spring.clinicmedia.domain.port.repository.user.PatientRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

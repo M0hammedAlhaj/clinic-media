@@ -3,7 +3,7 @@ package com.spring.clinicmedia.infrastructure.validation;
 import com.spring.clinicmedia.domain.exception.UserAccountNotActivation;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.user.User;
-import com.spring.clinicmedia.domain.port.repository.UserRepository;
+import com.spring.clinicmedia.domain.port.repository.user.UserRepository;
 import com.spring.clinicmedia.domain.port.validator.UserActivationValidator;
 import com.spring.clinicmedia.infrastructure.UserRepositoryDispatcher;
 import org.springframework.stereotype.Component;
