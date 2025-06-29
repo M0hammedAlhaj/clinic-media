@@ -5,7 +5,10 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-    <nav dir="rtl" className="bg-white border-b border-gray-200 dark:bg-gray-900">
+    <nav
+      dir="rtl"
+      className="sticky top-0 z-50 bg-white border-b border-gray-200 dark:bg-gray-900"
+    >
       <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto px-6 py-6">
         {/* Logo */}
         <a href="/" className="flex items-center gap-3">
@@ -41,8 +44,19 @@ const Navbar = () => {
             className="inline-flex items-center p-2 w-10 h-10 text-gray-500 rounded-lg md:hidden hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
           >
             <span className="sr-only">القائمة الرئيسية</span>
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 17 14" xmlns="http://www.w3.org/2000/svg">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 17 14"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
             </svg>
           </button>
         </div>
@@ -50,7 +64,9 @@ const Navbar = () => {
         {/* Menu Links */}
         <div
           id="mega-menu"
-          className={`w-full md:flex md:w-auto md:order-1 ${isMenuOpen ? "flex" : "hidden"}`}
+          className={`w-full md:flex md:w-auto md:order-1 ${
+            isMenuOpen ? "flex" : "hidden"
+          }`}
         >
           <ul className="flex flex-col mt-4 text-lg font-medium md:flex-row-reverse md:mt-0 md:gap-10">
             <li>
@@ -90,16 +106,36 @@ const Navbar = () => {
                 <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50">
                   <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
                     <li>
-                      <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">من نحن</a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                      >
+                        من نحن
+                      </a>
                     </li>
                     <li>
-                      <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">المدونة</a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                      >
+                        المدونة
+                      </a>
                     </li>
                     <li>
-                      <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">المصادر</a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                      >
+                        المصادر
+                      </a>
                     </li>
                     <li>
-                      <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">الدعم الفني</a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                      >
+                        الدعم الفني
+                      </a>
                     </li>
                   </ul>
                 </div>
