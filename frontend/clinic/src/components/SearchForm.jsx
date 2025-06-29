@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const SearchForm = () => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("All locations");
+  const [selectedCategory, setSelectedCategory] = useState("اختر مدينة");
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
@@ -10,7 +10,10 @@ const SearchForm = () => {
   };
 
   return (
-    <form className="max-w-2xlg mx-auto ">
+    <form
+      dir="rtl"
+      className="w-full max-w-[20rem] md:max-w-2xl lg:max-w-3xl mx-auto   "
+    >
       <div className="flex">
         <label
           htmlFor="search-dropdown"
@@ -23,7 +26,7 @@ const SearchForm = () => {
         <button
           type="button"
           onClick={() => setShowDropdown(!showDropdown)}
-          className="shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium 
+          className=" shrink-0 z-10 inline-flex items-center py-4 px-4 text-sm font-medium 
            text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
         >
           {selectedCategory}
@@ -44,32 +47,13 @@ const SearchForm = () => {
           </svg>
         </button>
 
-        {/* Dropdown List */}
-        {showDropdown && (
-          <div className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 absolute mt-12">
-            <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-              {["Amman", "Zarqh", "Design", "Logos"].map((item) => (
-                <li key={item}>
-                  <button
-                    type="button"
-                    onClick={() => handleCategorySelect(item)}
-                    className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    {item}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
         {/* Search Input */}
         <div className="relative w-full">
           <input
             type="search"
             id="search-dropdown"
-            className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
-            placeholder="Search Mockups, Logos, Design Templates..."
+            className="block p-4 md:p-6 lg:p-7 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+            placeholder="ابحث عن طبيب، عيادة، مستشفى..."
             required
           />
           <button
@@ -94,6 +78,25 @@ const SearchForm = () => {
             <span className="sr-only">Search</span>
           </button>
         </div>
+
+        {/* Dropdown List */}
+        {showDropdown && (
+          <div className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 absolute mt-12">
+            <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
+              {["عمان", "زرقاء", "اربد", "المفرق"].map((item) => (
+                <li key={item}>
+                  <button
+                    type="button"
+                    onClick={() => handleCategorySelect(item)}
+                    className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    {item}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </form>
   );
