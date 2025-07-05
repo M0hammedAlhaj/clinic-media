@@ -14,7 +14,7 @@ public class NotificationDoctorCreator implements SpecificNotificationCreator<Do
 
     @Override
     public UserType getUserType() {
-        return UserType.PATIENT;
+        return UserType.DOCTOR;
     }
 
     @Override
