@@ -1,24 +1,21 @@
 import { useState } from "react";
 import "./App.css";
-import Navbar from "./components/Navbar";
-import Search from "./components/Search";
-import Specialities from "./components/Specialities";
-import Doctor from "./components/Doctor";
-import Features from "./components/Features";
-import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/HomePage/HomePage";
+import Login from "./components/Login";
+
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <div className="flex flex-col  flex-wrap w-full">
-        <Navbar />
-        <Search />
-        <Specialities />
-        <Doctor />
-        <Features />
-        <Footer/>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/auth" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
+
     </>
   );
 }

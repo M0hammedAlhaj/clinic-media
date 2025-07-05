@@ -14,7 +14,8 @@ public class NotificationClinicCreator implements SpecificNotificationCreator<Cl
 
     @Override
     public UserType getUserType() {
-        return UserType.PATIENT;
+        return UserType.CLINIC;
+
     }
 
 

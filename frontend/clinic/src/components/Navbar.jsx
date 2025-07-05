@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Login from "./Login";
+import { Link } from "react-router-dom";
+
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +14,7 @@ const Navbar = () => {
     >
       <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto px-6 py-6">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3">
           <img
             src="https://flowbite.com/docs/images/logo.svg"
             className="h-10"
@@ -20,24 +23,22 @@ const Navbar = () => {
           <span className="self-center text-3xl font-bold whitespace-nowrap dark:text-white">
             كلينك
           </span>
-        </a>
+        </Link>
 
         {/* Right Side: Auth + Menu Button */}
         <div className="flex items-center md:order-2 gap-3">
-          <a
-            href="#"
-            className="text-gray-800 dark:text-white text-lg hover:bg-gray-100 dark:hover:bg-gray-700
-             font-medium rounded-lg px-3 py-2 md:px-5 lg:px-7"
+          <Link
+            to="/auth?mode=login"
+            className="text-gray-800 dark:text-white text-lg hover:bg-gray-100 dark:hover:bg-gray-700 font-medium rounded-lg px-3 py-2 md:px-5 lg:px-7"
           >
             تسجيل الدخول
-          </a>
-          <a
-            href="#"
-            className="text-white bg-blue-700 hover:bg-blue-800 dark:bg-blue-600
-             dark:hover:bg-blue-700 text-lg font-medium rounded-lg px-3 py-2 md:px-5 lg:px-7"
+          </Link>
+          <Link
+            to="/auth?mode=register"
+            className="text-white bg-blue-700 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 text-lg font-medium rounded-lg px-3 py-2 md:px-5 lg:px-7"
           >
             إنشاء حساب
-          </a>
+          </Link>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             type="button"
@@ -70,12 +71,13 @@ const Navbar = () => {
         >
           <ul className="flex flex-col mt-4 text-lg font-medium md:flex-row-reverse md:mt-0 md:gap-10">
             <li>
-              <a
-                href="#"
+
+              <Link
+                to="/"
                 className="block py-2 px-4 text-blue-700 dark:text-blue-500 hover:underline"
               >
                 الصفحة الرئيسية
-              </a>
+              </Link>
             </li>
             <li className="relative">
               <button

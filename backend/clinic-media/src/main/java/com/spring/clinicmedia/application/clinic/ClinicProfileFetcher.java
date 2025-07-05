@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  */
 @AllArgsConstructor
 @Service
-public class ClinicProfileFetcher {
+public class    ClinicProfileFetcher {
 
     private final ClinicRepository clinicUserRepository;
 
