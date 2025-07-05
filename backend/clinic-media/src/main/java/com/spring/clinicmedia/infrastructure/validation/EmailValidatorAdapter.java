@@ -2,8 +2,8 @@ package com.spring.clinicmedia.infrastructure.validation;
 
 import com.spring.clinicmedia.domain.exception.EmailAlreadyExistsException;
 import com.spring.clinicmedia.domain.exception.ResourceAlreadyExistsException;
-import com.spring.clinicmedia.domain.port.repository.RegistrationRepository;
-import com.spring.clinicmedia.domain.port.validator.EmailValidator;
+import com.spring.clinicmedia.domain.repository.RegistrationRepository;
+import com.spring.clinicmedia.domain.validator.EmailValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

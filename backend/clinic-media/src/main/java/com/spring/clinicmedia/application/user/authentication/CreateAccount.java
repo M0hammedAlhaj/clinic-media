@@ -4,9 +4,9 @@ package com.spring.clinicmedia.application.user.authentication;
 import com.spring.clinicmedia.domain.command.UserCreationCommand;
 import com.spring.clinicmedia.domain.factory.UserFactory;
 import com.spring.clinicmedia.domain.model.enitity.user.User;
-import com.spring.clinicmedia.domain.port.repository.UserRepository;
-import com.spring.clinicmedia.domain.port.validator.EmailValidator;
+import com.spring.clinicmedia.domain.repository.user.UserRepository;
 import com.spring.clinicmedia.domain.result.UserCreationResult;
+import com.spring.clinicmedia.domain.validator.EmailValidator;
 import com.spring.clinicmedia.infrastructure.UserRepositoryDispatcher;
 import com.spring.clinicmedia.infrastructure.mapping.UserCreationResultMapping;
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ public class CreateAccount {
 
     private final EmailValidator emailValidator;
 
-    private final UserFactory<UserCreationCommand> userFactory;
+    private final UserFactory userFactory;
 
     private final PasswordEncoder passwordEncoder;
 

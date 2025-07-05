@@ -2,7 +2,8 @@ package com.spring.clinicmedia.infrastructure.repository;
 
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.enitity.user.Patient;
-import com.spring.clinicmedia.infrastructure.Jpa.PatientJpa;
+import com.spring.clinicmedia.infrastructure.Jpa.users.PatientJpa;
+import com.spring.clinicmedia.infrastructure.repository.users.PatientRepositoryAdapter;
 import org.junit.jupiter.api.*;
 import org.mockito.*;
 

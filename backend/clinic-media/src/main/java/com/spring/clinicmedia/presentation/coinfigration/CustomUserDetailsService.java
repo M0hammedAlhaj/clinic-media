@@ -2,7 +2,7 @@ package com.spring.clinicmedia.presentation.coinfigration;
 
 import com.spring.clinicmedia.domain.model.CustomUserDetail;
 import com.spring.clinicmedia.domain.model.enitity.Registration;
-import com.spring.clinicmedia.domain.port.repository.RegistrationRepository;
+import com.spring.clinicmedia.domain.repository.RegistrationRepository;
 import com.spring.clinicmedia.infrastructure.UserRepositoryDispatcher;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

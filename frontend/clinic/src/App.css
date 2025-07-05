@@ -1,0 +1,24 @@
+@import "tailwindcss";
+ 
+
+*,::after,::before {
+  box-sizing: border-box;
+}
+
+
+.btn_primary {
+  @apply bg-blue-500 text-white font-bold  rounded;
+
+}
+
+.btn_primary:hover {
+  @apply bg-blue-700;
+}
+
+.btn_secondary {
+  @apply dark:bg-gray-900 text-white font-bold  rounded;
+}
+
+.btn_secondary:hover {
+  @apply bg-gray-700;
+}

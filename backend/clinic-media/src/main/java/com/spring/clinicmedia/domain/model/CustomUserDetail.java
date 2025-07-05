@@ -2,7 +2,7 @@ package com.spring.clinicmedia.domain.model;
 
 import com.spring.clinicmedia.domain.model.enitity.Registration;
 import com.spring.clinicmedia.domain.model.enitity.user.User;
-import com.spring.clinicmedia.domain.port.repository.UserRepository;
+import com.spring.clinicmedia.domain.repository.user.UserRepository;
 import com.spring.clinicmedia.infrastructure.UserRepositoryDispatcher;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;

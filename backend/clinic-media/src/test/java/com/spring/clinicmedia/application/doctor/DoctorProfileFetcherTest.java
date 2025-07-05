@@ -1,6 +1,6 @@
 package com.spring.clinicmedia.application.doctor;
 
-import com.spring.clinicmedia.domain.port.repository.DoctorRepository;
+import com.spring.clinicmedia.domain.repository.user.DoctorRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

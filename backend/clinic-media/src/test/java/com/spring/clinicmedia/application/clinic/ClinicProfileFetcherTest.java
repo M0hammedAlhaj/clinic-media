@@ -1,6 +1,6 @@
 package com.spring.clinicmedia.application.clinic;
 
-import com.spring.clinicmedia.domain.port.repository.ClinicRepository;
+import com.spring.clinicmedia.domain.repository.user.ClinicRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

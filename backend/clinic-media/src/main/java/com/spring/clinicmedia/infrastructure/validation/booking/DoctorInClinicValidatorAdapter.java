@@ -1,8 +1,8 @@
 package com.spring.clinicmedia.infrastructure.validation.booking;
 
 import com.spring.clinicmedia.domain.exception.DoctorNotInClinicException;
-import com.spring.clinicmedia.domain.port.repository.DoctorRepository;
-import com.spring.clinicmedia.domain.port.validator.booking.DoctorInClinicValidator;
+import com.spring.clinicmedia.domain.repository.user.DoctorRepository;
+import com.spring.clinicmedia.domain.validator.booking.DoctorInClinicValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

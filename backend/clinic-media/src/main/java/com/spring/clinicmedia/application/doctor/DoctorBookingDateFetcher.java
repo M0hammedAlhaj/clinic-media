@@ -5,9 +5,9 @@ import com.spring.clinicmedia.domain.model.BookingDateState;
 import com.spring.clinicmedia.domain.model.enitity.BookingDate;
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
 import com.spring.clinicmedia.domain.model.enitity.user.Doctor;
-import com.spring.clinicmedia.domain.port.repository.BookingDateRepository;
-import com.spring.clinicmedia.domain.port.repository.ClinicRepository;
-import com.spring.clinicmedia.domain.port.repository.DoctorRepository;
+import com.spring.clinicmedia.domain.repository.BookingDateRepository;
+import com.spring.clinicmedia.domain.repository.user.ClinicRepository;
+import com.spring.clinicmedia.domain.repository.user.DoctorRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -2,7 +2,7 @@ package com.spring.clinicmedia.application.clinic;
 
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
-import com.spring.clinicmedia.domain.port.repository.ClinicRepository;
+import com.spring.clinicmedia.domain.repository.user.ClinicRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  */
 @AllArgsConstructor
 @Service
-public class ClinicProfileFetcher {
+public class    ClinicProfileFetcher {
 
     private final ClinicRepository clinicUserRepository;
 

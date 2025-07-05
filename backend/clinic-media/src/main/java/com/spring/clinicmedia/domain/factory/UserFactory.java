@@ -1,9 +1,9 @@
 package com.spring.clinicmedia.domain.factory;
 
+import com.spring.clinicmedia.domain.command.UserCreationCommand;
 import com.spring.clinicmedia.domain.model.enitity.user.User;
-import com.spring.clinicmedia.infrastructure.factory.Creator;
 
-public interface UserFactory<U> extends Creator<User,U> {
+public interface UserFactory extends Creator<User, UserCreationCommand> {
 
-    User create(U t);
+    User create(UserCreationCommand userCreationCommand);
 }

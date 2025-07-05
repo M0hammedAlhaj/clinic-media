@@ -7,7 +7,7 @@ public class ClinicProfileMapper {
 
     public static ClinicProfile toClinicProfile(Clinic clinic) {
         return ClinicProfile.builder()
-                .locations(LocationMapper.toListStringLocations(clinic.getClincLocations()))
+                .locations(LocationMapper.toListStringLocations(clinic.getClinicLocations()))
                 .userEmail(clinic.getRegistration().getEmail())
                 .name(clinic.getRegistration().getName())
                 .build();

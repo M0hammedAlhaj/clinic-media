@@ -1,7 +1,7 @@
 package com.spring.clinicmedia.application.clinic;
 
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
-import com.spring.clinicmedia.domain.port.repository.ClinicRepository;
+import com.spring.clinicmedia.domain.repository.user.ClinicRepository;
 import com.spring.clinicmedia.presentation.dto.FilterSpecification;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -3,7 +3,7 @@ package com.spring.clinicmedia.infrastructure.repository;
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.ClinicDoctorRequest;
-import com.spring.clinicmedia.domain.port.repository.RequestRepository;
+import com.spring.clinicmedia.domain.repository.RequestRepository;
 import com.spring.clinicmedia.infrastructure.Jpa.RequestJpa;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;

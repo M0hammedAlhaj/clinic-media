@@ -2,8 +2,8 @@ package com.spring.clinicmedia.application.request;
 
 import com.spring.clinicmedia.domain.model.UserType;
 import com.spring.clinicmedia.domain.model.enitity.ClinicDoctorRequest;
-import com.spring.clinicmedia.domain.port.repository.RequestRepository;
-import com.spring.clinicmedia.domain.port.validator.UserActivationValidator;
+import com.spring.clinicmedia.domain.repository.RequestRepository;
+import com.spring.clinicmedia.domain.validator.UserActivationValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;

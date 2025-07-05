@@ -2,7 +2,7 @@ package com.spring.clinicmedia.application.insurance;
 
 import com.spring.clinicmedia.domain.exception.ResourceAlreadyExistsException;
 import com.spring.clinicmedia.domain.model.enitity.Insurance;
-import com.spring.clinicmedia.domain.port.repository.InsuranceRepository;
+import com.spring.clinicmedia.domain.repository.InsuranceRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

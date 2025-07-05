@@ -2,7 +2,7 @@ package com.spring.clinicmedia.infrastructure.repository;
 
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.enitity.MedicalRecord;
-import com.spring.clinicmedia.domain.port.repository.MedicalRecordRepository;
+import com.spring.clinicmedia.domain.repository.MedicalRecordRepository;
 import com.spring.clinicmedia.infrastructure.Jpa.MedicalRecordJpa;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

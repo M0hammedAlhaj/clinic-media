@@ -2,8 +2,8 @@ package com.spring.clinicmedia.infrastructure.validation;
 
 import com.spring.clinicmedia.domain.exception.ResourceAlreadyExistsException;
 import com.spring.clinicmedia.domain.model.enitity.user.Clinic;
-import com.spring.clinicmedia.domain.port.repository.ClinicRepository;
-import com.spring.clinicmedia.domain.port.validator.SpecialityValidator;
+import com.spring.clinicmedia.domain.repository.user.ClinicRepository;
+import com.spring.clinicmedia.domain.validator.SpecialityValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

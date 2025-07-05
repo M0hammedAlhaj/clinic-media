@@ -2,7 +2,7 @@ package com.spring.clinicmedia.infrastructure.repository;
 
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.enitity.Insurance;
-import com.spring.clinicmedia.domain.port.repository.InsuranceRepository;
+import com.spring.clinicmedia.domain.repository.InsuranceRepository;
 import com.spring.clinicmedia.infrastructure.Jpa.InsuranceJpa;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;

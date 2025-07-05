@@ -2,7 +2,7 @@ package com.spring.clinicmedia.infrastructure.repository;
 
 import com.spring.clinicmedia.domain.exception.ResourcesNotFoundException;
 import com.spring.clinicmedia.domain.model.enitity.Speciality;
-import com.spring.clinicmedia.domain.port.repository.SpecialityRepository;
+import com.spring.clinicmedia.domain.repository.SpecialityRepository;
 import com.spring.clinicmedia.infrastructure.Jpa.SpecialityJpa;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
