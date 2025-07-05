@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Login from "./Login";
 import { Link } from "react-router-dom";
 
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -38,7 +39,6 @@ const Navbar = () => {
           >
             إنشاء حساب
           </Link>
-
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             type="button"
@@ -71,6 +71,7 @@ const Navbar = () => {
         >
           <ul className="flex flex-col mt-4 text-lg font-medium md:flex-row-reverse md:mt-0 md:gap-10">
             <li>
+
               <Link
                 to="/"
                 className="block py-2 px-4 text-blue-700 dark:text-blue-500 hover:underline"
